@@ -9,11 +9,11 @@ const service = new StudentService()
 
 //GET
 
-router.get('/',async (req,res),next=>{
+router.get('/',async (req,res,next)=>{
 	try{
 
-		const students = service.find()
-		res.send(students) 
+		const students = await service.find()
+		res.json(students);
 
 	}catch(error){
 

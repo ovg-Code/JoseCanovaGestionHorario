@@ -1,22 +1,32 @@
+const pool = require('../libs/postgress.pool');
+
 class StudentService{
 
-	create(){
+	constructor(){
+		this.pool = pool;
+    	this.pool.on('error', (err) => console.error(err));
+	}
+	
+
+	async create(){
 
 	}
 
-	find(){
-		return('Encontrado')
+	async find(){
+		const query = 'SELECT * FROM STUDENT';
+    	const rta = await this.pool.query(query);
+    	return rta.rows;
 	}
 
-	findOne(id){
+	async findOne(id){
 		return('encontrado uno')
 	}
 
-	update(id){
+	async update(id){
 		
 	}
 
-	delete(){
+	async delete(){
 		return('Eliminado')
 	}
 }
