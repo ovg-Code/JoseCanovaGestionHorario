@@ -1,10 +1,10 @@
-const pool = require('../libs/postgress.pool');
+const sequelize = require('../libs/sequelize');
+const pool = require('../libs/sequelize');
 
 class StudentService{
 
 	constructor(){
-		this.pool = pool;
-    	this.pool.on('error', (err) => console.error(err));
+		
 	}
 	
 
@@ -14,8 +14,8 @@ class StudentService{
 
 	async find(){
 		const query = 'SELECT * FROM STUDENT';
-    	const rta = await this.pool.query(query);
-    	return rta.rows;
+    	const [data] = await sequelize.query(query);
+    	return data;
 	}
 
 	async findOne(id){
