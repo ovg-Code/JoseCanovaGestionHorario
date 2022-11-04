@@ -1,12 +1,12 @@
 const Joi=require('joi')
 
-const id_subject=Joi.string().min(5).max(10)
-const namesubject=Joi.string().min(4).max(40)
+const id_subject=Joi.string().min(4).max(10)
+const namesubject=Joi.string().min(3).max(40)
 
 
 const createSubjectSchema=Joi.object({
 
-    id_subject:id_subject.require(),
+    id_subject:id_subject.required(),
     namesubject:namesubject.required(),
   
 })

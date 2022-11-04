@@ -1,23 +1,38 @@
+const {models} = require('./../libs/sequelize')
+const boom = require('@hapi/boom')
+
 class LaboratoryService{
 
-	create(){
-
+	async create(data){
+		const newLaboratory = await models.Laboratory.create(data)
+		return newLaboratory
 	}
 
-	find(){
-		return('Encontrado')
+	async find(){
+		const laboratory= await models.Laboratory.findAll()
+		return laboratory
 	}
 
-	findOne(id){
-		return('encontrado uno')
+	async findOne(id){
+	
+		const laboratory = await models.Laboratory.findByPk(id);
+   		if (!laboratory) {
+      		throw boom.notFound('Laboratory not found');
+    	}
+    	return laboratory;
 	}
 
-	update(id){
+	async update(id,changes){
+		const laboratory = await this.findOne(id)
+		const rta = await laboratory.update(changes)
+		return rta
 		
 	}
 
-	delete(){
-		return('Eliminado')
+	async delete(id){
+		const laboratory = await this.findOne(id);
+    	await laboratory.destroy();
+    	return { id };
 	}
 }
 

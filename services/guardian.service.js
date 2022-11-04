@@ -1,23 +1,41 @@
+const {models} = require('./../libs/sequelize')
+const boom = require('@hapi/boom')
+
 class GuardianService{
 
-	create(){
+	async create(data){
 
+		const newGuardian = await models.Guardian.create(data)
+		return newGuardian
 	}
 
-	find(){
-		return('Encontrado')
+	async find(){
+
+		const guardian= await models.Guardian.findAll()
+		return guardian
 	}
 
-	findOne(id){
-		return('encontrado uno')
+	async findOne(id){
+
+		const guardian = await models.Guardian.findByPk(id);
+   		if (!guardian) {
+      		throw boom.notFound('Guardian not found');
+    	}
+    	return guardian;
 	}
 
-	update(id){
-		
+	async update(id,changes){
+
+		const guardian = await this.findOne(id)
+		const rta = await guardian.update(changes)
+		return rta
 	}
 
-	delete(id){
-		return('Eliminado')
+	async delete(id){
+
+		const guardian = await this.findOne(id);
+    	await guardian.destroy();
+    	return { id };
 	}
 }
 

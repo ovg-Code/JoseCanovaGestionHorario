@@ -19,24 +19,20 @@ router.get('/',async (req,res,next)=>{
 
 		next(error)
 	}
-	
 })
 
 router.get('/:id',
-  validatorHandler(getStudentSchema, 'params'),
   async (req,res,next)=>{
 	try{
-
-		const{id}=req.params
-		const students = service.findOne(id)
-		res.send(students) 
+		const { id } = req.params
+		const student = await service.findOne(id)
+		res.json(student) 
 
 	}catch(error){
 
 		next(error)
 
 	}
-	
 })
 
 // POST
@@ -45,42 +41,43 @@ router.post('/',
   validatorHandler(createStudentSchema, 'body'),
   async (req,res,next)=>{
 	try{
-
 		const body = req.body
-
-		res.json({
-		message:'created'
-
-	}) 
+		const newStudent = await service.create(body)
+		res.status(201).json(newStudent)
+		
 	}catch(error){
 		next(error)
 	}
-	
 })
 
 //PATCH
 
 router.patch('/:id',
-  validatorHandler(getStudentSchema, 'params'),
   validatorHandler(updateStudentSchema, 'body'),
-  async (req,res)=>{
-	const{id} = req.params
-	const body=req.body
-
-	res.json({
-		message:'Update',
-		data:body,
-		id
-	})
-
+  async (req,res,next )=>{
+	try{
+		const{id} = req.params
+		const body=req.body
+		const student = await service.update(id, body)
+		res.json(student)
+	}catch(error){
+		next(error)
+	}
 })
 
 //DELETE
 
-router.delete('/:id',(req,res)=>
-	{const{id}=req.params
-		res.json({message:'deleted',id,})
-	})
+router.delete('/:id',
+async (req,res,next)=>{
+	try{
+		const {id} = req.params
+		await service.delete(id)
+		res.status(201).json({id})
+	}catch(error){
+		next(error)
+	}
+})
+	
 
 
 

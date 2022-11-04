@@ -1,23 +1,36 @@
+const boom = require('@hapi/boom');
+const {models} = require('./../libs/sequelize')
+
 class GroupService{
 
-	create(){
-
+	async create(data){
+		const newGroup = await models.Group.create(data)
+		return newGroup
 	}
 
-	find(){
-		return('Encontrado')
+	async find(){
+		const group= await models.Group.findAll()
+		return group
 	}
 
-	findOne(id){
-		return('encontrado uno')
+	async findOne(id){
+		const group = await models.Group.findByPk(id);
+   		if (!group) {
+      		throw boom.notFound('Group not found');
+    	}
+    	return group;
 	}
 
-	update(id){
-		
+	async update(id,changes){
+		const group = await this.findOne(id)
+		const rta = await group.update(changes)
+		return rta
 	}
 
-	delete(id){
-		return('Eliminado')
+	async delete(id){
+		const group = await this.findOne(id);
+    	await group.destroy();
+    	return { id };
 	}
 }
 
