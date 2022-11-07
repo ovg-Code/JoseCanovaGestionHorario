@@ -62,7 +62,13 @@ const StudentSchema = {
 
 class Student extends Model{
     static assocciate(models){
-        
+        this.belongsToMany(models.Guardian,{
+            as:'guardian',
+            through: models.Studentguardian,
+            foreignKey: 'id_card_student',
+            otherKey: 'id_card_guardian'
+            
+        })
     }
     static config(sequelize){
         return{

@@ -1,15 +1,15 @@
 const Joi=require('joi')
 
-const id_card_teacher=Joi.string().min(10).max(10)
+const id_card_teacher=Joi.string().min(5).max(10)
 const firstnameteacher=Joi.string().min(2).max(40)
 const secondnameteacher=Joi.string().min(2).max(40)
 const firstlastnameteacher=Joi.string().min(2).max(40)
 const secondlastnameteacher=Joi.string().min(2).max(40)
 const phonenumberteacher=Joi.string().min(6).max(10)
 const emailteacher=Joi.string().min(10).max(100)
-const provinceteacher=Joi.string().min(10).max(60)
-const districtteacher=Joi.string().min(10).max(60)
-const corregimientoteacher=Joi.string().min(10).max(60)
+const provinceteacher=Joi.string().min(2).max(60)
+const districtteacher=Joi.string().min(2).max(60)
+const corregimientoteacher=Joi.string().min(2).max(60)
 const phototeacher=Joi.string().min(10).max(100)
 const passwordteacher=Joi.string().min(6).max(10)
 
@@ -20,7 +20,7 @@ const createTeacherSchema=Joi.object({
     firstlastnameteacher: firstlastnameteacher.required(),
     secondlastnameteacher: secondlastnameteacher,
     phonenumberteacher: phonenumberteacher.required(),
-    emailteacher: emaiteachert,
+    emailteacher: emailteacher,
     provinceteacher: provinceteacher.required(),
     districtteacher: districtteacher.required(),
     corregimientoteacher: corregimientoteacher.required(),
@@ -39,7 +39,7 @@ const updateTeacherSchema=Joi.object({
     provinceteacher: provinceteacher,
     districtteacher: districtteacher,
     corregimientoteacher: corregimientoteacher,
-    phototeacher: photosteacher,
+    phototeacher: phototeacher,
     passwordteacher:passwordteacher,
 
 })

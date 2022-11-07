@@ -8,13 +8,19 @@ class GroupService{
 		return newGroup
 	}
 
+	async addLaboratory(data){
+		const newLaboratory = await models.GroupLaboratory.create(data)
+		return newLaboratory
+	}
+
 	async find(){
 		const group= await models.Group.findAll()
 		return group
 	}
 
 	async findOne(id){
-		const group = await models.Group.findByPk(id);
+		const group = await models.Group.findByPk(id,{
+			include:['Laboratory']})
    		if (!group) {
       		throw boom.notFound('Group not found');
     	}

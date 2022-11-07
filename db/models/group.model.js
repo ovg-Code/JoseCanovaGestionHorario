@@ -43,6 +43,13 @@ class Group extends Model{
             as:'students',
             foreignKey: 'fk_id_group'
         })
+        this.belongsToMany(models.Laboratory,{
+            as:'Laboratory',
+            through: models.GroupLaboratory,
+            foreignKey: 'fk_id_group',
+            otherKey: 'fk_id_laboratory'
+            
+        })
 
     
     }

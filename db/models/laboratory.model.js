@@ -22,7 +22,12 @@ const LaboratorySchema = {
 }
 
 class Laboratory extends Model{
-   
+    static assocciate(models){
+        this.hasMany(models.GroupLaboratory,{
+            as:'group',
+            foreignKey: 'fk_id_laboratory',
+        })
+    }
     static config(sequelize){
         return{
             sequelize,

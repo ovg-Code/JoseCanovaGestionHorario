@@ -14,13 +14,21 @@ class StudentService{
 		return newStudent
 	}
 
+	async addGuardian(data){
+
+		const newGauardian = await models.Studentguardian.create(data)
+		return newGauardian
+	}
+
 	async find(){
 		const student= await models.Student.findAll()
 		return student
 	}
 
 	async findOne(id){
-		const student = await models.Student.findByPk(id);
+		const student = await models.Student.findByPk(id,{
+			include:['guardian']
+		});
    		if (!student) {
       		throw boom.notFound('Student not found');
     	}

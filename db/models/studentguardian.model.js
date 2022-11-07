@@ -23,8 +23,7 @@ const StudentguardianSchema = {
 
 class Studentguardian extends Model{
     static assocciate(models){
-        this.belongsTo(models.Guardian, {as: 'student_fK'})
-        this.belongsTo(models.Student, {as: 'guardian_fK'})
+        
     }
     static config(sequelize){
         return{

@@ -26,11 +26,13 @@ function setupModels (sequelize){
     teachersubjectgroup.init(TeacherSubjectGroupSchema,teachersubjectgroup.config(sequelize)) 
       
     Group.assocciate(sequelize.models)
-    GroupLaboratory.assocciate(sequelize.models)
+    Laboratory.assocciate(sequelize.models)
     Middle.assocciate(sequelize.models)
     Premiddle.assocciate(sequelize.models)
     Student.assocciate(sequelize.models)
-    Studentguardian.assocciate(sequelize.models)
+    Guardian.assocciate(sequelize.models)
+  
+
 }
 
 module.exports = setupModels

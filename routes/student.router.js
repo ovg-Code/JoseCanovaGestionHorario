@@ -2,7 +2,7 @@ const express = require('express')
 
 const StudentService =require('./../services/student.service')
 const validatorHandler=require('./../middlewares/validator.handler')
-const{createStudentSchema,updateStudentSchema,getStudentSchema}=require('./../schemas/student.schema')
+const{createStudentSchema,updateStudentSchema,getStudentSchema, addGuardianSchema}=require('./../schemas/student.schema')
 
 const router = express.Router()
 const service = new StudentService()
@@ -44,6 +44,19 @@ router.post('/',
 		const body = req.body
 		const newStudent = await service.create(body)
 		res.status(201).json(newStudent)
+		
+	}catch(error){
+		next(error)
+	}
+})
+
+router.post('/addguardian',
+  validatorHandler(addGuardianSchema, 'body'),
+  async (req,res,next)=>{
+	try{
+		const body = req.body
+		const newGuardian = await service.addGuardian(body)
+		res.status(201).json(newGuardian)
 		
 	}catch(error){
 		next(error)

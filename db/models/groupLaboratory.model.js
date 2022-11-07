@@ -25,8 +25,6 @@ const GroupLaboratorySchema = {
 class GroupLaboratory extends Model{
     static assocciate(models){
 
-        this.belongsTo(models.Laboratory, {as: 'laboratory_fk'})
-        this.belongsTo(models.Group, {as: 'group_fk'}) 
     }
     static config(sequelize){
         return{

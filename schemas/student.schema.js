@@ -1,6 +1,7 @@
 const Joi=require('joi')
 
 const id_card_student=Joi.string().min(5).max(10)
+const id_card_guardian=Joi.string().min(5).max(10)
 const firstnamestudent=Joi.string().min(2).max(40)
 const secondnamestudent=Joi.string().min(2).max(40)
 const firstlastnamestudent=Joi.string().min(2).max(40)
@@ -45,9 +46,14 @@ const updateStudentSchema=Joi.object({
     passwordstudent:passwordstudent,
     fk_id_group:fk_id_group
 })
-const getStudentSchema=Joi.object({
-    id_card_student: id_card_student.required()
 
+const addGuardianSchema=Joi.object({
+    id_card_student: id_card_student,
+    id_card_guardian: id_card_guardian.required()
 })
 
-module.exports={createStudentSchema,updateStudentSchema,getStudentSchema}
+const getStudentSchema=Joi.object({
+    id_card_student: id_card_student.required()
+})
+
+module.exports={createStudentSchema,updateStudentSchema,getStudentSchema,addGuardianSchema}

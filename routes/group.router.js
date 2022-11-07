@@ -1,7 +1,7 @@
 const express = require('express')
 const GroupService =require('./../services/group.service')
 const validatorHandler=require('./../middlewares/validator.handler')
-const{createGroupSchema,updateGroupSchema,getGroupSchema}=require('./../schemas/group.schema')
+const{createGroupSchema,updateGroupSchema,getGroupSchema, addLaboratory}=require('./../schemas/group.schema')
 
 const router = express.Router()
 const service = new GroupService()
@@ -49,6 +49,19 @@ router.post('/',
 		next(error)
 	}
 	
+})
+
+router.post('/addLaboratory',
+  validatorHandler(addLaboratory, 'body'),
+  async (req,res,next)=>{
+	try{
+		const body = req.body
+		const newLaboratory = await service.addLaboratory(body)
+		res.status(201).json(newLaboratory)
+		
+	}catch(error){
+		next(error)
+	}
 })
 
 //PATCH

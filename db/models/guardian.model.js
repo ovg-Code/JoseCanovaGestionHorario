@@ -54,8 +54,11 @@ const GuardianSchema = {
 }
 
 class Guardian extends Model{
-    static assocciate(){
-
+    static assocciate(models){
+        this.hasMany(models.Studentguardian,{
+            as:'student',
+            foreignKey: 'id_card_student',
+        })
     }
     static config(sequelize){
         return{

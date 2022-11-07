@@ -3,7 +3,7 @@ const boom = require('@hapi/boom')
 
 class TeacherService{
 
-	async create(){
+	async create(data){
 		const teacher = await models.Teacher.create(data)
 		return teacher
 	}
@@ -21,13 +21,13 @@ class TeacherService{
     	return teacher;
 	}
 
-	async update(id){
+	async update(id,changes){
 		const teacher = await this.findOne(id)
 		const rta = await teacher.update(changes)
 		return rta
 	}
 
-	async delete(){
+	async delete(id){
 		const teacher = await this.findOne(id);
     	await teacher.destroy();
     	return { id };
