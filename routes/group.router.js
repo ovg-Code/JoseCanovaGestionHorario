@@ -1,7 +1,7 @@
 const express = require('express')
 const GroupService =require('./../services/group.service')
 const validatorHandler=require('./../middlewares/validator.handler')
-const{createGroupSchema,updateGroupSchema,getGroupSchema, addLaboratory}=require('./../schemas/group.schema')
+const{createGroupSchema,updateGroupSchema,getGroupSchema, addLaboratory,addMiddle,addPremiddle}=require('./../schemas/group.schema')
 
 const router = express.Router()
 const service = new GroupService()
@@ -62,6 +62,34 @@ router.post('/addLaboratory',
 	}catch(error){
 		next(error)
 	}
+})
+
+router.post('/addMiddle',
+  validatorHandler(addMiddle, 'body'),
+  async (req,res,next)=>{
+	try{
+		const body = req.body
+		const middle = await service.addMiddle(body)
+		res.status(201).json(middle)
+		
+	}catch(error){
+		next(error)
+	}
+	
+})
+
+router.post('/addPremiddle',
+  validatorHandler(addPremiddle, 'body'),
+  async (req,res,next)=>{
+	try{
+		const body = req.body
+		const newGroup = await service.addPremiddle(body)
+		res.status(201).json(newGroup)
+		
+	}catch(error){
+		next(error)
+	}
+	
 })
 
 //PATCH

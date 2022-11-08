@@ -25,7 +25,7 @@ const MiddleSchema = {
 
 class Middle extends Model{
     static assocciate(models){
-        this.belongsTo(models.Group, {as: 'group_fk'})
+        
     }
     static config(sequelize){
         return{

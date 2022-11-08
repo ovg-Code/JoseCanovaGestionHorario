@@ -8,6 +8,8 @@ const levelgroup=Joi.string().min(1).max(40)
 const lettergroup=Joi.string().min(1).max(40)
 const periodgroup=Joi.string().min(1).max(40)
 const fk_id_classroom=Joi.string().min(2).max(15)
+const schoolshiftmiddle = Joi.string().min(1).max(1)
+const baccalaureatemiddle = Joi.string().min(1).max(1)
 
 const createGroupSchema=Joi.object({
 
@@ -36,4 +38,17 @@ const getGroupSchema=Joi.object({
     id_group:id_group,
 })
 
-module.exports={createGroupSchema,updateGroupSchema,getGroupSchema, addLaboratory}
+const addMiddle=Joi.object({
+    fk_id_group:id_group.required(),
+    schoolshiftmiddle:schoolshiftmiddle.required(),
+    baccalaureatemiddle:baccalaureatemiddle.required()
+
+})
+
+const addPremiddle=Joi.object({
+    fk_id_group:id_group.required(),
+    schoolshiftpremiddle:schoolshiftmiddle.required(),
+})
+
+
+module.exports={createGroupSchema,updateGroupSchema,getGroupSchema, addLaboratory,addMiddle,addPremiddle}

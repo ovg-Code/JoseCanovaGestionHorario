@@ -51,6 +51,16 @@ class Group extends Model{
             
         })
 
+        this.hasMany(models.Middle,{
+            as:'middle',
+            foreignKey: 'fk_id_group'
+        })
+
+        this.hasMany(models.Middle,{
+            as:'Premiddle',
+            foreignKey: 'fk_id_group'
+        })
+
     
     }
     static config(sequelize){

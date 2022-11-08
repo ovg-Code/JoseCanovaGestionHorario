@@ -13,6 +13,16 @@ class GroupService{
 		return newLaboratory
 	}
 
+	async addMiddle(data){
+		const newMiddle= await models.Middle.create(data)
+		return newMiddle
+	}
+
+	async addPremiddle(data){
+		const newPreiddle= await models.Premiddle.create(data)
+		return newPreiddle
+	}
+
 	async find(){
 		const group= await models.Group.findAll()
 		return group
