@@ -42,9 +42,7 @@ const TeacherSubjectGroupSchema = {
 
 class teachersubjectgroup extends Model{
     static assocciate(models){
-        this.belongsTo(models.Teacher, {as: 'teacher_fk'})
-        this.belongsTo(models.Group, {as: 'group_fk'})
-        this.belongsTo(models.Subject, {as: 'subject_fk'})
+
     }
     static config(sequelize){
         return{

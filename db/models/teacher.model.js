@@ -54,7 +54,14 @@ const TeacherSchema = {
 }
 
 class Teacher extends Model{
-    static assocciate(){
+    static assocciate(models){
+
+        this.belongsToMany(models.Subject,{
+            as:'subject',
+            through: models.Teachersubjectgroup,
+            foreignKey: 'fk_id_card_teacher',
+            otherKey: 'id_subject'
+        })
 
     }
     static config(sequelize){

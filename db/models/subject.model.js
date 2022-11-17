@@ -18,8 +18,14 @@ const SubjectSchema = {
 }
 
 class subject extends Model{
-    static assocciate(){
-
+    static assocciate(models){
+       
+        this.belongsToMany(models.Group,{
+            as:'group',
+            through: models.Teachersubjectgroup,
+            foreignKey: 'fk_id_subject',
+            otherKey: 'fk_id_group'
+        })
     }
     static config(sequelize){
         return{

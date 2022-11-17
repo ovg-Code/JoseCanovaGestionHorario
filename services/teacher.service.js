@@ -7,6 +7,10 @@ class TeacherService{
 		const teacher = await models.Teacher.create(data)
 		return teacher
 	}
+	async addSubject(data){
+		const subject = await models.Teachersubjectgroup.create(data)
+		return subject
+	}
 
 	async find(){
 		const teacher= await models.Teacher.findAll()

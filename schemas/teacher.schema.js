@@ -12,6 +12,10 @@ const districtteacher=Joi.string().min(2).max(60)
 const corregimientoteacher=Joi.string().min(2).max(60)
 const phototeacher=Joi.string().min(10).max(100)
 const passwordteacher=Joi.string().min(6).max(10)
+const fk_id_group=Joi.string().min(6).max(10)
+const id_subject=Joi.string().min(4).max(10)
+const dayteachersubjectgroup=Joi.date().timestamp()
+const  hourteachersubjectgroup= Joi.date
 
 const createTeacherSchema=Joi.object({
     id_card_teacher: id_card_teacher.required(),
@@ -43,6 +47,14 @@ const updateTeacherSchema=Joi.object({
     passwordteacher:passwordteacher,
 
 })
+const addSubject=Joi.object({
+    fk_id_card_teacher: id_card_teacher.required(),
+    fk_id_group:fk_id_group.required(),
+    fk_id_subject:id_subject.required(),
+    hourteachersubjectgroup : hourteachersubjectgroup,
+    dayteachersubjectgroup:dayteachersubjectgroup.required()
+
+})
 const getTeacherSchema=Joi.object({
     id_card_teacher: id_card_teacher,
     firstnameteacher: firstnameteacher,
@@ -50,4 +62,4 @@ const getTeacherSchema=Joi.object({
 
 })
 
-module.exports={createTeacherSchema,updateTeacherSchema,getTeacherSchema}
+module.exports={createTeacherSchema,updateTeacherSchema,getTeacherSchema,addSubject}   

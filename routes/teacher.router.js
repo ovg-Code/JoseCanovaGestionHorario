@@ -1,7 +1,7 @@
 const express = require('express')
 const TeacherService = require('./../services/teacher.service')
 const validatorHandler=require('./../middlewares/validator.handler')
-const{createTeacherSchema,updateTeacherSchema,getTeacherSchema}=require('./../schemas/teacher.schema')
+const{createTeacherSchema,updateTeacherSchema,getTeacherSchema, addSubject}=require('./../schemas/teacher.schema')
 
 const router = express.Router()
 const service = new TeacherService
@@ -41,6 +41,18 @@ router.post('/',validatorHandler(createTeacherSchema, 'body'),
 		const body = req.body
 		const newTeacher = await service.create(body)
 		res.status(201).json(newTeacher)
+		
+	}catch(error){
+		next(error)
+	}
+})
+
+router.post('/addsubject',validatorHandler(addSubject, 'body'),
+  async (req,res,next)=>{
+	try{
+		const body = req.body
+		const addsubject = await service.addSubject(body)
+		res.status(201).json(addsubject)
 		
 	}catch(error){
 		next(error)

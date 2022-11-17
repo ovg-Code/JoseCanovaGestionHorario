@@ -61,6 +61,11 @@ class Group extends Model{
             foreignKey: 'fk_id_group'
         })
 
+        this.hasMany(models.Teachersubjectgroup,{
+            as:'Teachersubjectgroup',
+            foreignKey: 'fk_id_group'
+        })
+
     
     }
     static config(sequelize){
