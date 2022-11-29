@@ -15,9 +15,10 @@ const SubjectSchema = {
         type: DataTypes.STRING
     }
 
+
 }
 
-class subject extends Model{
+class subject extends Model{    
     static assocciate(models){
        
         this.belongsToMany(models.Group,{
@@ -26,6 +27,16 @@ class subject extends Model{
             foreignKey: 'fk_id_subject',
             otherKey: 'fk_id_group'
         })
+
+        this.belongsToMany(models.Teacher,{
+            as:'teacher',
+            through: models.Teachersubjectgroup,
+            foreignKey: 'fk_id_subject',
+            otherKey: 'fk_id_card_teacher'
+        })
+
+
+       
     }
     static config(sequelize){
         return{

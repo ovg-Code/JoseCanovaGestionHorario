@@ -14,8 +14,8 @@ const phototeacher=Joi.string().min(10).max(100)
 const passwordteacher=Joi.string().min(6).max(10)
 const fk_id_group=Joi.string().min(6).max(10)
 const id_subject=Joi.string().min(4).max(10)
-const dayteachersubjectgroup=Joi.date().timestamp()
-const  hourteachersubjectgroup= Joi.date
+const dayteachersubjectgroup=Joi.string().min(4).max(10)
+const  hourteachersubjectgroup= Joi.string().min(4).max(10)
 
 const createTeacherSchema=Joi.object({
     id_card_teacher: id_card_teacher.required(),
@@ -51,7 +51,7 @@ const addSubject=Joi.object({
     fk_id_card_teacher: id_card_teacher.required(),
     fk_id_group:fk_id_group.required(),
     fk_id_subject:id_subject.required(),
-    hourteachersubjectgroup : hourteachersubjectgroup,
+    hourteachersubjectgroup : hourteachersubjectgroup.required(),
     dayteachersubjectgroup:dayteachersubjectgroup.required()
 
 })

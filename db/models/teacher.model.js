@@ -60,7 +60,7 @@ class Teacher extends Model{
             as:'subject',
             through: models.Teachersubjectgroup,
             foreignKey: 'fk_id_card_teacher',
-            otherKey: 'id_subject'
+            otherKey: 'fk_id_subject'
         })
 
     }

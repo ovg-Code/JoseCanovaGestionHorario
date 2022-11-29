@@ -14,7 +14,19 @@ class SubjectService{
 	}
 
 	async findOne(id){
-		const subject = await models.Subject.findByPk(id);
+		const subject = await models.Subject.findByPk(id,{
+			include:[{
+				association:'group',
+				attributes: ['id_group'],
+				through: {attributes: []},
+			},{
+				association:'teacher',
+				attributes: ['firstnameteacher','firstlastnameteacher'],
+				through: {attributes: []},
+			}],
+			
+			
+		});
    		if (!subject) {
       		throw boom.notFound('Subject not found');
     	}

@@ -18,7 +18,13 @@ class TeacherService{
 	}
 
 	async findOne(id){
-		const teacher = await models.Teacher.findByPk(id);
+		const teacher = await models.Teacher.findByPk(id,{
+			include:[{
+				association:'subject',
+				through: {attributes: []}
+				
+			}]
+		});
    		if (!teacher) {
       		throw boom.notFound('Teacher not found');
     	}

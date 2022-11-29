@@ -44,7 +44,7 @@ class Group extends Model{
             foreignKey: 'fk_id_group'
         })
         this.belongsToMany(models.Laboratory,{
-            as:'Laboratory',
+            as:'laboratory',
             through: models.GroupLaboratory,
             foreignKey: 'fk_id_group',
             otherKey: 'fk_id_laboratory'
@@ -61,12 +61,19 @@ class Group extends Model{
             foreignKey: 'fk_id_group'
         })
 
-        this.hasMany(models.Teachersubjectgroup,{
-            as:'Teachersubjectgroup',
-            foreignKey: 'fk_id_group'
+        this.belongsToMany(models.Teacher,{
+            as:'teacher',
+            through: models.Teachersubjectgroup,
+            foreignKey: 'fk_id_group',
+            otherKey: 'fk_id_card_teacher'
         })
 
-    
+        this.belongsToMany(models.Subject,{
+            as:'subject',
+            through: models.Teachersubjectgroup,
+            foreignKey: 'fk_id_group',
+            otherKey: 'fk_id_subject'
+        })
     }
     static config(sequelize){
         return{

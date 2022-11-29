@@ -30,7 +30,23 @@ class GroupService{
 
 	async findOne(id){
 		const group = await models.Group.findByPk(id,{
-			include:['Laboratory']})
+			include:[{
+				association:'laboratory',
+				through: {attributes: []},
+			},
+			{
+				association:'subject',
+				include:[{
+					association:'teacher',
+					attributes:['id_card_teacher','firstnameteacher','firstlastnameteacher'],
+					through: {attributes: []},
+				}],
+				through: {attributes: []},
+			}
+			
+		],
+		}
+			)
    		if (!group) {
       		throw boom.notFound('Group not found');
     	}

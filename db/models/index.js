@@ -11,6 +11,7 @@ const {Studentguardian, StudentguardianSchema} =require('./studentguardian.model
 const {subject,SubjectSchema} = require('./subject.model')
 const {teachersubjectgroup, TeacherSubjectGroupSchema} = require('./teachersubjectgroup.model')
 
+
 function setupModels (sequelize){
     Classroom.init(ClassroomSchema,Classroom.config(sequelize))
     Laboratory.init(LaboratorySchema,Laboratory.config(sequelize))
@@ -31,6 +32,9 @@ function setupModels (sequelize){
     Premiddle.assocciate(sequelize.models)
     Student.assocciate(sequelize.models)
     Guardian.assocciate(sequelize.models)
+    Teacher.assocciate(sequelize.models)
+    subject.assocciate(sequelize.models)
+    
   
 
 }
