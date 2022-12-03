@@ -1,11 +1,17 @@
 const {models} = require('./../libs/sequelize')
 const boom = require('@hapi/boom')
+const bcrypt = require('bcrypt')
 
 class TeacherService{
 
 	async create(data){
-		const teacher = await models.Teacher.create(data)
-		return teacher
+		const hash = await bcrypt.hash(data.passwordteacher,10)
+		const newTeacher = await models.Teacher.create({
+			...data,
+			passwordteacher:hash
+		})
+		delete newTeacher.dataValues.passwordteacher
+		return newTeacher
 	}
 	async addSubject(data){
 		const subject = await models.Teachersubjectgroup.create(data)
