@@ -1,23 +1,49 @@
+const {models} = require('./../libs/sequelize')
+const boom = require('@hapi/boom')
+const bcrypt = require('bcrypt')
+
 class GuardianService{
 
-	create(){
+	async create(data){
 
+		const hash = await bcrypt.hash(data.passwordguardian,10)
+		const newGuardian = await models.Guardian.create({
+			...data,
+			passwordguardian: hash
+		})
+		delete newGuardian.dataValues.passwordguardian
+		return newGuardian
 	}
 
-	find(){
-		return('Encontrado')
+	async find(){
+
+		const guardian= await models.Guardian.findAll()
+		delete guardian.dataValues.passwordguardian
+		return guardian
 	}
 
-	findOne(id){
-		return('encontrado uno')
+	async findOne(id){
+
+		const guardian = await models.Guardian.findByPk(id);
+		delete guardian.dataValues.passwordguardian
+   		if (!guardian) {
+      		throw boom.notFound('Guardian not found');
+    	}
+    	return guardian;
 	}
 
-	update(id){
-		
+	async update(id,changes){
+
+		const guardian = await this.findOne(id)
+		const rta = await guardian.update(changes)
+		return rta
 	}
 
-	delete(id){
-		return('Eliminado')
+	async delete(id){
+
+		const guardian = await this.findOne(id);
+    	await guardian.destroy();
+    	return { id };
 	}
 }
 

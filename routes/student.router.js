@@ -1,51 +1,96 @@
 const express = require('express')
+
 const StudentService =require('./../services/student.service')
+const validatorHandler=require('./../middlewares/validator.handler')
+const{createStudentSchema,updateStudentSchema,getStudentSchema, addGuardianSchema}=require('./../schemas/student.schema')
+
 const router = express.Router()
 const service = new StudentService()
 
 //GET
 
-router.get('/',(req,res)=>{
-	const students = service.find()
-	res.send(students) 
+router.get('/',async (req,res,next)=>{
+	try{
+
+		const students = await service.find()
+		res.json(students);
+
+	}catch(error){
+
+		next(error)
+	}
 })
 
-router.get('/:id',(req,res)=>{
-	const{id}=req.params
-	const students = service.findOne(id)
-	res.send(students) 
+router.get('/:id',
+  async (req,res,next)=>{
+	try{
+		const { id } = req.params
+		const student = await service.findOne(id)
+		res.json(student) 
+
+	}catch(error){
+
+		next(error)
+
+	}
 })
 
 // POST
 
-router.post('/',(req,res)=>{
-	const body = req.body
+router.post('/',
+  validatorHandler(createStudentSchema, 'body'),
+  async (req,res,next)=>{
+	try{
+		const body = req.body
+		const newStudent = await service.create(body)
+		res.status(201).json(newStudent)
+		
+	}catch(error){
+		next(error)
+	}
+})
 
-	res.json({
-		message:'created'
-	}) 
+router.post('/addguardian',
+  validatorHandler(addGuardianSchema, 'body'),
+  async (req,res,next)=>{
+	try{
+		const body = req.body
+		const newGuardian = await service.addGuardian(body)
+		res.status(201).json(newGuardian)
+		
+	}catch(error){
+		next(error)
+	}
 })
 
 //PATCH
 
-router.patch('/:id',(req,res)=>{
-	const{id} = req.params
-	const body=req.body
-
-	res.json({
-		message:'Update',
-		data:body,
-		id
-	})
-
+router.patch('/:id',
+  validatorHandler(updateStudentSchema, 'body'),
+  async (req,res,next )=>{
+	try{
+		const{id} = req.params
+		const body=req.body
+		const student = await service.update(id, body)
+		res.json(student)
+	}catch(error){
+		next(error)
+	}
 })
 
 //DELETE
 
-router.delete('/:id',(req,res)=>
-	{const{id}=req.params
-		res.json({message:'deleted',id,})
-	})
+router.delete('/:id',
+async (req,res,next)=>{
+	try{
+		const {id} = req.params
+		await service.delete(id)
+		res.status(201).json({id})
+	}catch(error){
+		next(error)
+	}
+})
+	
 
 
 
