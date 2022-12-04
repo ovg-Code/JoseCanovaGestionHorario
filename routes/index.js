@@ -1,5 +1,6 @@
 const express = require('express')
 
+
 const studentRouter = require('./student.router')
 const teacherRouter =require('./teacher.router')
 const guardianRouter =require('./guardian.router')
@@ -7,7 +8,7 @@ const classroomRouter =require('./classroom.router')
 const groupRouter =require('./group.router')
 const laboratoryRouter =require('./laboratory.router')
 const subjectRouter =require('./subject.router')
-
+const authRouter = require('./auth.router');
 function routerApi(app){
 	const router = express.Router()
 	app.use('/api/v1',router)
@@ -18,7 +19,8 @@ function routerApi(app){
 	router.use('/group',groupRouter)
 	router.use('/laboratory',laboratoryRouter)
 	router.use('/subject',subjectRouter)
-}
+	router.use('/auth', authRouter);
+}	
 
 module.exports = routerApi
  

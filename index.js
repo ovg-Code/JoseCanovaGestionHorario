@@ -6,12 +6,12 @@ const app = express();
 const port = 3000;
 app.use(express.json());
 
-app.get('/',(req,res)=>{
+app.get('/',(req,res)=>{ 
 
 	res.send('Iniciando server')
 
 })
-
+require('./utils/auth')
 routerApi(app)
 app.use(logErrors)
 app.use(boomErrorHandler)
