@@ -31,6 +31,15 @@ class StudentService{
 		return student
 	}
 
+	async findOneLogin(id){
+		const student = await models.Student.findByPk(id)
+   		if (!student) {
+      		throw boom.notFound('Student not found');
+    	}
+    	return student;
+	}
+
+
 	async findOne(id){
 		const student = await models.Student.findByPk(id,{
 			include:[{association: 'subject',}]
