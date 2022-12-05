@@ -6,16 +6,20 @@ const UserService = require('./../../../services/student.service')
 
 const service = new UserService()
 
-const LocalStrategy = new Strategy({usernameField: 'id_card_student', passwordField: 'passwordstudent'},async (idCard,password,done)=>{
+const LocalStrategy = new Strategy({
+    usernameField: 'id_card_student', 
+    passwordField: 'passwordstudent'
+},async (id_card_student,passwordstudent,done)=>{
     try{
-       const student = await service.findOneLogin(idCard)
+       const student = await service.findOneLogin(id_card_student)
        if(!student){
         done(boom.unauthorized(),false)
        }
-       const isMatch = await bcrypt.compare(password,student.passwordStudent)
+       const isMatch = await bcrypt.compare(passwordstudent,student.passwordstudent)
        if(!isMatch){
         done(boom.unauthorized(),false)
        }
+       delete student.dataValues.passwordstudent
        done(null,student)
     }catch(error){
         done(error,false)
