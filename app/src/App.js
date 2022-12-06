@@ -1,14 +1,20 @@
 import React from 'react'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import tablero from './components/tablero'
+import Home from './components/Home'
+import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
+import Profesores from './components/Profesores'
+import Barra from './components/Barra'
 
-export default function App() {
+export const App = () => {
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path='/' element={<tablero/>}/>
-    </Routes>
-    </BrowserRouter>
+    <div>
+      <Barra/>
+      <Router>
+        <Routes>
+          <Route path='/' element={<Home/>} />
+          <Route path='/Profesores' element={<Profesores/>}/>
+        </Routes>
+      </Router>
+    </div>
   )
 }
 
