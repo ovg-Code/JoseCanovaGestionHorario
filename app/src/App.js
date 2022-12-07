@@ -1,18 +1,21 @@
 import React from 'react'
-import Home from './components/Home'
+import Home from './pages/Home'
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
-import Profesores from './components/Profesores'
-import Barra from './components/Barra'
-
+import Profesores from './pages/Profesores'
+import Sidebar from './components/Sidebar'
+import Estudiantes from './pages/Estudiantes'
+import Addestudiante from './pages/Addestudiante'
 export const App = () => {
   return (
     <div>
-      <Barra/>
       <Router>
-        <Routes>
-          <Route path='/' element={<Home/>} />
-          <Route path='/Profesores' element={<Profesores/>}/>
-        </Routes>
+        <Sidebar/>
+          <Routes>
+            <Route path='/' element={<Home/>} />
+            <Route path='/Profesores' element={<Profesores/>}/>
+            <Route path='/Estudiantes' element={<Estudiantes/>}/>
+            <Route path='/Addestudiante' element={<Addestudiante/>}/>
+          </Routes> 
       </Router>
     </div>
   )
