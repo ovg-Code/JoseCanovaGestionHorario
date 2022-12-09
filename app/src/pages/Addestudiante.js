@@ -1,7 +1,48 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import '../components/Addestudiantes.css'
+import axios from 'axios';
 
 export default function Addestudiante() {
+const url="http://localhost:3000/api/v1/student"
+const [data, setData]= useState({
+   id_estudiante:"",
+   nombre: "",
+   apellido: "",
+   corregimiento:"",
+   provincestudent:"",
+   distrito:"",
+   email:"",
+   telefono:"",
+   password:"",
+   id_grupo:"",
+   
+})
+
+function submit(e){
+    e.preventDefault();
+    axios.post(url,{
+        id_card_student: data.id_estudiante,
+        firstnamestudent: data.nombre,
+        firstlastnamestudent: data.apellido,
+        corregimientostudent: data.corregimiento,
+        provincestudent: data.provincestudent,
+        districtstudent: data.distrito,
+        emailstudent: data.email,
+        phonenumberstudent: data.telefono,
+        passwordstudent: data.passwordstudent,
+        fk_id_group: data.id_grupo
+    })
+    .then(res=>{
+        console.log(res.data)
+    })
+}
+
+function handler(e){
+const newdata={...data}
+newdata[e.target.id] = e.target.value
+setData(newdata)
+console.log(newdata)
+}
 
   return (
     <Fragment>
@@ -10,34 +51,54 @@ export default function Addestudiante() {
         <div className='container_tabla'>
             <div className='top_tabla'>
                 <h1 className='title_tabla'>Detalles de Estudiante</h1>
-                    <form>
-                        <label for="name">
+                    <form onSubmit={(e)=> submit(e)}>
+                        <label for="nombre">
                             <span className='addnameestudiante'>Nombre*</span>
-                            <input className='nestudiante' id="name" type="text" name="nameestu" autoComplete='given-name'/>  
+                            <input onChange={(e)=>handler(e)} id="nombre" value={data.id_card_student} placeholder="Nombre del Estudiante" className='nestudiante' type="text" autoComplete='given-name' required/>  
                         </label>
-                        <label for="lastname">
+                        <label for="apellido">
                             <span className='lasttitle'>Apellido*</span>
-                            <input className='lastnameimput' id="name" type="text" name="fname" autoComplete='family-name' />  
+                            <input onChange={(e)=>handler(e)} id="apellido" value={data.apellido} placeholder="Apellido del Estudiante" className='lastnameimput' type="text"  autoComplete='family-name' required/>  
                         </label>
-                        <label for="lastname">
-                            <span className='fechatitle'>Fecha de Nacimiento*</span>
-                            <input className='fechaimp' id="name" type="date" name="fname" />  
+                        <label for="fecha">
+                            <span className='fechatitle'>Provincia*</span>
+                            <input onChange={(e)=>handler(e)} id="provincestudent" value={data.provincestudent} placeholder="Ingresar la provincia" className='fechaimp' type="place"  required/>  
                         </label>
-                        <label for="lastname">
+                        <label for="corregimiento">
                             <span className='corregititle'>Corregimiento*</span>
-                            <input className='corregiimp' id="name" type="text" name="fname" />  
+                            <input onChange={(e)=>handler(e)} id="corregimiento" value={data.corregimiento} placeholder="corregimiento" className='corregiimp' type="text" required/>  
                         </label>
-                        <label for="lastname">
+                        <label for="distrito">
                             <span className='distritotitle'>Distrito*</span>
-                            <input className='distritoimp' id="name" type="text" name="fname" />  
+                            <input onChange={(e)=>handler(e)} id="distrito" value={data.distrito} placeholder="distrito" className='distritoimp' type="text" required/>  
                         </label>
-                        <label for="lastname">
-                            <span className='emailtitle'>Email*</span>
-                            <input className='emailimp' id="name" type="email" name="fname" />  
+                        <label for="email">
+                            <span className='emailtitle'>Email</span>
+                            <input onChange={(e)=>handler(e)} id="email" value={data.email} placeholder="Correo electronico" className='emailimp' type="email" />  
                         </label>
-                        <label for="lastname">
+                        <label for="telefono">
                             <span className='phonetitle'>Telefono*</span>
-                            <input className='phoneimput' id="name" type="text" name="fname" />  
+                            <input onChange={(e)=>handler(e)} id="telefono" value={data.telefono} placeholder="Telefono" className='phoneimput' type="text" required/>  
+                        </label>
+                        <label for="id">
+                            <span className='idtitle'>Cedula*</span>
+                            <input onChange={(e)=>handler(e)} id="id_estudiante" value={data.id_estudiante} placeholder="Cedula del Estudiante" className='idimput' type="name" required/>  
+                        </label>
+                        <label for="grupo">
+                            <span className='grupotitle'>ID Grupo*</span>
+                            <input onChange={(e)=>handler(e)} id="id_grupo" value={data.id_grupo} placeholder="id_grupo" className='grupoimput' type="name" required/>  
+                        </label>
+                        <label for="acudiente">
+                            <span className='acudientetitle'>Contraseña*</span>
+                            <input onChange={(e)=>handler(e)} id="passwordstudent" value={data.passwordstudent} placeholder="Contraseña del estudiante" className='acudienteimput' type="name" required/>  
+                        </label>
+                        <label for="acudientenombre">
+                            <span className='acudientenombretitle'>Acudiente Nombre*</span>
+                            <input onChange={(e)=>handler(e)} id="acudientenombre" value={data.acudientenombre} placeholder="Nombre del Acudiente" className='acudientenombreimput' type="name" required/>  
+                        </label>
+                        <label for="acudienteapellido">
+                            <span className='acudienteapellidotitle'>Acudiente Apellido*</span>
+                            <input onChange={(e)=>handler(e)} id="acudienteapellido" value={data.acudienteapellido} placeholder="Apellido del acudiente" className='acudienteapellidoimput' type="name" required/>  
                         </label>
                         <button className='button' type='submit'>
                             Guardar

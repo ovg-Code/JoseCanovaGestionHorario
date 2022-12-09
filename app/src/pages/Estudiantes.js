@@ -26,13 +26,13 @@ export default function Estudiantes() {
 
     console.log(datos);
   return (
-    <div>
+    <div className='body'>
         <a className='title'>Estudiantes</a>
         <a href='/Addestudiante' className='add'>
             + Nuevos Estudianes
         </a>
-        <Fragment>
-        <table Class="tabla">
+        <Fragment className>
+        <table className='tabla'>
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -42,7 +42,7 @@ export default function Estudiantes() {
                     <th>Telefono</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody >
                 {datos.map(datos => (
                 <tr>
                     <td>{datos.firstnamestudent} {datos.firstlastnamestudent}</td>
