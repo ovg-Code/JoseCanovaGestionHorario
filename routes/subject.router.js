@@ -1,6 +1,9 @@
 const express = require('express')
+const passport = require('passport');
+
 const SubjectService = require('./../services/subject.service')
 const validatorHandler=require('./../middlewares/validator.handler')
+const { checkRoles } = require('./../middlewares/auth.handle')
 const{createSubjectSchema,getSubjectSchema,updateSubjectSchema}=require('./../schemas/subject.schema')
 
 const router = express.Router()
@@ -8,7 +11,10 @@ const service = new SubjectService
 
 //GET
 
-router.get('/',async (req,res,next)=>{
+router.get('/',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin','teacher'),
+  async (req,res,next)=>{
 	try{
 
 		const subjects = await service.find()
@@ -20,7 +26,10 @@ router.get('/',async (req,res,next)=>{
 	}
 })
 
-router.get('/:id',async (req,res,next)=>{
+router.get('/:id',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin','teacher'),
+  async (req,res,next)=>{
 	try{
 		const { id } = req.params
 		const student = await service.findOne(id)
@@ -35,7 +44,10 @@ router.get('/:id',async (req,res,next)=>{
 
 // POST
 
-router.post('/',validatorHandler(createSubjectSchema, 'body'),
+router.post('/',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
+  validatorHandler(createSubjectSchema, 'body'),
   async (req,res,next)=>{
 	try{
 		const body = req.body
@@ -49,28 +61,34 @@ router.post('/',validatorHandler(createSubjectSchema, 'body'),
 
 //PATCH
 
-router.patch('/:id',validatorHandler(updateSubjectSchema, 'body'),
-  async (req,res,next )=>{
-	try{
-		const{id} = req.params
-		const body=req.body
-		const student = await service.update(id, body)
-		res.json(student)
-	}catch(error){
-		next(error)
-	}
+router.patch('/:id',
+	passport.authenticate('jwt', {session: false}),
+	checkRoles('admin'),
+	validatorHandler(updateSubjectSchema, 'body'),
+	async (req,res,next )=>{
+		try{
+			const{id} = req.params
+			const body=req.body
+			const student = await service.update(id, body)
+			res.json(student)
+		}catch(error){
+			next(error)
+		}
 })
 
 //DELETE
 
-router.delete('/:id',async (req,res,next)=>{
-	try{
-		const {id} = req.params
-		await service.delete(id)
-		res.status(201).json({id})
-	}catch(error){
-		next(error)
-	}
+router.delete('/:id', 
+	passport.authenticate('jwt', {session: false}),
+	checkRoles('admin'),
+	async (req,res,next)=>{
+		try{
+			const {id} = req.params
+			await service.delete(id)
+			res.status(201).json({id})
+		}catch(error){
+			next(error)
+		}
 })
 
 module.exports = router
