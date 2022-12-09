@@ -27,16 +27,17 @@ export default function Profesores() {
   return (
     <div className='body'>
         <a className='title'>Profesores</a>
+      <div className='contenedor'>
         {datos.map(datos => (
-          <div className='contenedor'>
+          
           <div>
               <img className='photo'>{datos.phototeacher}</img>
               <h3 className='nameteacher'>{datos.firstnameteacher} {datos.firstlastnameteacher}</h3>
               <p className='materia'>{datos.id_card_teacher}</p>
           </div>
-      </div>
+      
                 ))}
-            
+       </div>     
     </div>
   )
 }
