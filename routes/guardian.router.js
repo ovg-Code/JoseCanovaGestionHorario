@@ -1,5 +1,8 @@
 const express = require('express')
+const passport = require('passport');
+
 const validatorHandler=require('./../middlewares/validator.handler')
+const { checkRoles } = require('./../middlewares/auth.handle')
 const GuardianService = require('./../services/guardian.service')
 const{createGuardianSchema,getGuardianSchema,updateGuardianSchema}=require('./../schemas/guardian.schema')
 
@@ -8,7 +11,10 @@ const service = new GuardianService()
 
 //GET
 
-router.get('/',async (req,res,next)=>{
+router.get('/',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin','teacher'),
+async (req,res,next)=>{
 	try{
 
 		const guardians = await service.find()
@@ -20,21 +26,26 @@ router.get('/',async (req,res,next)=>{
 	}
 })
 
-router.get('/:id',async (req,res,next)=>{
-	try{
-		const { id } = req.params
-		const guardian = await service.findOne(id)
-		res.json(guardian);
+router.get('/:id',
+	passport.authenticate('jwt', {session: false}),
+	checkRoles('admin','teacher'),
+	async (req,res,next)=>{
+		try{
+			const { id } = req.params
+			const guardian = await service.findOne(id)
+			res.json(guardian);
 
-	}catch(error){
+		}catch(error){
 
-		next(error)
-	}
+			next(error)
+		}
 })
 
 // POST
 
 router.post('/', 
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
   validatorHandler(createGuardianSchema, 'body'),
   async (req,res,next)=>{
 	try{
@@ -50,6 +61,8 @@ router.post('/',
 //PATCH
 
 router.patch('/:id',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
   validatorHandler(updateGuardianSchema, 'body'),
   async (req,res,next )=>{
 	try{
@@ -64,7 +77,10 @@ router.patch('/:id',
 
 //DELETE
 
-router.delete('/:id',async (req,res,next)=>{
+router.delete('/:id',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
+  async (req,res,next)=>{
 	try{
 		const {id} = req.params
 		await service.delete(id)

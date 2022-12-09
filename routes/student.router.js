@@ -1,7 +1,8 @@
 const express = require('express')
-
+const passport = require('passport');
 const StudentService =require('./../services/student.service')
 const validatorHandler=require('./../middlewares/validator.handler')
+const { checkRoles } = require('./../middlewares/auth.handle')
 const{createStudentSchema,updateStudentSchema,getStudentSchema, addGuardianSchema}=require('./../schemas/student.schema')
 
 const router = express.Router()
@@ -22,7 +23,10 @@ router.get('/',async (req,res,next)=>{
 })
 
 router.get('/:id',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin','teacher'),
   async (req,res,next)=>{
+
 	try{
 		const { id } = req.params
 		const student = await service.findOne(id)
@@ -38,6 +42,8 @@ router.get('/:id',
 // POST
 
 router.post('/',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
   validatorHandler(createStudentSchema, 'body'),
   async (req,res,next)=>{
 	try{
@@ -51,6 +57,8 @@ router.post('/',
 })
 
 router.post('/addguardian',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
   validatorHandler(addGuardianSchema, 'body'),
   async (req,res,next)=>{
 	try{
@@ -66,6 +74,8 @@ router.post('/addguardian',
 //PATCH
 
 router.patch('/:id',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin','teacher'),
   validatorHandler(updateStudentSchema, 'body'),
   async (req,res,next )=>{
 	try{
@@ -81,14 +91,16 @@ router.patch('/:id',
 //DELETE
 
 router.delete('/:id',
-async (req,res,next)=>{
-	try{
-		const {id} = req.params
-		await service.delete(id)
-		res.status(201).json({id})
-	}catch(error){
-		next(error)
-	}
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
+	async (req,res,next)=>{
+		try{
+			const {id} = req.params
+			await service.delete(id)
+			res.status(201).json({id})
+		}catch(error){
+			next(error)
+		}
 })
 	
 

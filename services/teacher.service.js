@@ -23,6 +23,14 @@ class TeacherService{
 		return teacher
 	}
 
+	async findOneLogin(id){
+		const teacher = await models.Teacher.findByPk(id)
+   		if (!teacher) {
+      		throw boom.notFound('Teacher not found');
+    	}
+    	return teacher;
+	}
+
 	async findOne(id){
 		const teacher = await models.Teacher.findByPk(id,{
 			include:[{

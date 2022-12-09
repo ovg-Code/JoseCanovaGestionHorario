@@ -42,7 +42,7 @@ class StudentService{
 
 	async findOne(id){
 		const student = await models.Student.findByPk(id,{
-			include:[{association: 'subject',}]
+			include:[{association: 'guardian'}]
 		});
    		if (!student) {
       		throw boom.notFound('Student not found');

@@ -22,6 +22,14 @@ class GuardianService{
 		return guardian
 	}
 
+	async findOneLogin(id){
+		const guardian = await models.Guardian.findByPk(id)
+   		if (!guardian) {
+      		throw boom.notFound('Guardian not found');
+    	}
+    	return guardian;
+	}
+
 	async findOne(id){
 
 		const guardian = await models.Guardian.findByPk(id);

@@ -1,5 +1,8 @@
 const express = require('express')
+const passport = require('passport');
+
 const GroupService =require('./../services/group.service')
+const { checkRoles } = require('./../middlewares/auth.handle')
 const validatorHandler=require('./../middlewares/validator.handler')
 const{createGroupSchema,updateGroupSchema,getGroupSchema, addLaboratory,addMiddle,addPremiddle}=require('./../schemas/group.schema')
 
@@ -8,7 +11,10 @@ const service = new GroupService()
 
 //GET
 
-router.get('/',async (req,res,next)=>{
+router.get('/',
+	passport.authenticate('jwt', {session: false}),
+	checkRoles('admin','teacher'),
+	async (req,res,next)=>{
 	try{
 
 		const group = await service.find()
@@ -22,6 +28,8 @@ router.get('/',async (req,res,next)=>{
 })
 
 router.get('/:id',
+	passport.authenticate('jwt', {session: false}),
+	checkRoles('admin','teacher'),
 	async (req,res,next)=>{
 		try{
 			const { id } = req.params
@@ -38,6 +46,8 @@ router.get('/:id',
 // POST
 
 router.post('/',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
   validatorHandler(createGroupSchema, 'body'),
   async (req,res,next)=>{
 	try{
@@ -52,6 +62,8 @@ router.post('/',
 })
 
 router.post('/addLaboratory',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
   validatorHandler(addLaboratory, 'body'),
   async (req,res,next)=>{
 	try{
@@ -65,6 +77,8 @@ router.post('/addLaboratory',
 })
 
 router.post('/addMiddle',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
   validatorHandler(addMiddle, 'body'),
   async (req,res,next)=>{
 	try{
@@ -79,6 +93,8 @@ router.post('/addMiddle',
 })
 
 router.post('/addPremiddle',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
   validatorHandler(addPremiddle, 'body'),
   async (req,res,next)=>{
 	try{
@@ -95,6 +111,8 @@ router.post('/addPremiddle',
 //PATCH
 
 router.patch('/:id',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
   validatorHandler(updateGroupSchema, 'body'),
   async (req,res,next )=>{
 	try{
@@ -111,6 +129,8 @@ router.patch('/:id',
 //DELETE
 
 router.delete('/:id',
+  passport.authenticate('jwt', {session: false}),
+  checkRoles('admin'),
   async (req,res,next)=>{
 	try{
 		const {id} = req.params
