@@ -27,17 +27,22 @@ export default function Profesores() {
   return (
     <div className='body'>
         <a className='title'>Profesores</a>
+        <a href='/Addprofesores' className='add'>
+            + Nuevos Profesores
+        </a>
       <div className='contenedor'>
+        <div className='cuadros'>
         {datos.map(datos => (
-          
+        
           <div>
               <img className='photo'>{datos.phototeacher}</img>
               <h3 className='nameteacher'>{datos.firstnameteacher} {datos.firstlastnameteacher}</h3>
               <p className='materia'>{datos.id_card_teacher}</p>
           </div>
-      
+        
                 ))}
-       </div>     
+       </div> 
+      </div>     
     </div>
   )
 }
