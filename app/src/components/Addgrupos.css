@@ -18,8 +18,8 @@
     /* Color/White */
     
     color: #F2F7F5;
-    }
-    
+}
+
     .nestudiante{
         box-sizing: border-box;
     
@@ -301,7 +301,7 @@
     order: 0;
     flex-grow: 0; 
     }
-    .button{
+    .button1{
         display: flex;
         flex-direction: row;
         justify-content: center;
@@ -313,7 +313,29 @@
         width: 100px;
         height: 40px;
         left: 753px;
-        top: 350px;
+        top: 310px;
+        
+        /* Color/Green */
+        
+        border: 2px solid #00473E;
+        border-radius: 40px;
+        }
+
+    
+    /*Classroom*/
+    .button2{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 24px;
+        gap: 10px;
+        
+        position: absolute;
+        width: 200px;
+        height: 40px;
+        left: 40px;
+        top: 400px;
         
         /* Color/Green */
         

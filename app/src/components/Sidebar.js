@@ -2,7 +2,6 @@ import React, { Children } from 'react'
 import logito from './logo.png'
 import { NavLink } from 'react-router-dom';
 import './Sidestyle.css'
-import studentlogo from './Student.png';
 
 const Sidebar= ({Children}) =>{
   const menuItem=[

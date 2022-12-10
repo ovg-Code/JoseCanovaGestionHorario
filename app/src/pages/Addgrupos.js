@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect, useState} from 'react'
+import React, { useState} from 'react'
 import '../components/Addgrupos.css'
 import axios from 'axios';
 
@@ -11,6 +11,9 @@ const [data, setData]= useState({
    levelgroup:"",
    yeargroup:"",
    lettergroup:"",
+   id_classroom:"",
+   pavilionclassroom:"",
+   capacityclassroom:"",
 })
 
 function submit(e){
@@ -22,6 +25,9 @@ function submit(e){
         levelgroup: data.levelgroup,
         yeargroup: data.yeargroup,
         lettergroup: data.lettergroup,
+        id_classroom: data.id_classroom,
+        pavilionclassroom: data.pavilionclassroom,
+        capacityclassroom: data.capacityclassroom
 
     })
     .then(res=>{
@@ -37,12 +43,11 @@ console.log(newdata)
 }
 
   return (
-    <Fragment>
         <div>
         <h1 className='title'>Añadir Nuevos Grupos</h1>
         <div className='container_tabla'>
             <div className='top_tabla'>
-                <h1 className='title_tabla'>Detalles del grupo</h1>
+                <h1 className='title_tabla'>Detalles del Grupo</h1>
                     <form onSubmit={(e)=> submit(e)}>
                         <label for="nombre">
                             <span className='addnameestudiante'>Salon*</span>
@@ -68,16 +73,18 @@ console.log(newdata)
                             <span className='distritotitle'>Letra*</span>
                             <input onChange={(e)=>handler(e)} id="lettergroup" value={data.lettergroup} placeholder="Letra de nivel" className='distritoimp' type="text" required/>  
                         </label>
-                        <button className='button' type='submit'>
+                        <button className='button1' type='submit'>
                             Guardar
                         </button>
                     </form> 
+                    <a href='/Addsalon' className='button2'>
+                        + Nuevo Salon
+                    </a>
+
             </div>
 
         </div>
 
     </div>  
-    </Fragment>
-  
   )
 }

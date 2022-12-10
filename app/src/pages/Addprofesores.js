@@ -30,7 +30,6 @@ function submit(e){
         emailteacher: data.email,
         phonenumberteacher: data.telefono,
         passwordteacher: data.passwordstudent,
-       // fk_id_group: data.id_grupo
     })
     .then(res=>{
         console.log(res.data)
@@ -45,7 +44,6 @@ console.log(newdata)
 }
 
   return (
-    <Fragment>
         <div>
         <h1 className='title'>Añadir Nuevo Estudiante</h1>
         <div className='container_tabla'>
@@ -101,7 +99,6 @@ console.log(newdata)
         </div>
 
     </div>  
-    </Fragment>
   
   )
 }
