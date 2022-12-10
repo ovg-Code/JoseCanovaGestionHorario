@@ -1,0 +1,322 @@
+.title_tabla{
+    position: absolute;
+    width: 306px;
+    height: 36px;
+    left: 50px;
+    top: 20px;
+    
+    /* Heading/Heading 3 */
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 36px;
+    /* identical to box height */
+    
+    
+    /* Color/White */
+    
+    color: #F2F7F5;
+    }
+    
+    .nestudiante{
+        box-sizing: border-box;
+    
+    position: absolute;
+    width: 400px;
+    height: 48px;
+    
+    left: 30px;
+    right: 0px;
+    top: 150px;
+    
+    /* Color/White */
+    
+    background: #F2F7F5;
+    /* Color/Gray 2 */
+    
+    border: 1px solid #00473E;
+    border-radius: 5px;
+    }
+    
+    .addnameestudiante{
+        position: absolute;
+        width: 577px;
+        height: 91px;
+        left: 40px;
+        top: 110px;
+    /* Text/Text Semi Bold 1 */
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    /* Color/Text */
+    
+    color: #00473E;
+    
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    }
+    
+    .lastnameimput{
+        
+    
+        position: absolute;
+        width: 400px;
+        height: 48px;
+        
+        left: 0 px;
+        right: 30px;
+        top: 150px;
+        
+        /* Color/White */
+        
+        background: #F2F7F5;
+        /* Color/Gray 2 */
+        
+        border: 1px solid #00473E;
+        border-radius: 5px; 
+    }
+    
+    .lasttitle{
+        position: absolute;
+        width: 577px;
+        height: 91px;
+        left: 480px;
+        top: 110px;
+    /* Text/Text Semi Bold 1 */
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    /* Color/Text */
+    
+    color: #00473E;
+    
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+    }
+    
+    .fechaimp{
+        box-sizing: border-box;
+    
+        position: absolute;
+        width: 200px;
+        height: 48px;
+        
+        left: 30px;
+        right: 0px;
+        top: 250px;
+        
+        /* Color/White */
+        
+        background: #F2F7F5;
+        /* Color/Gray 2 */
+        
+        border: 1px solid #00473E;
+        border-radius: 5px;
+    }
+    
+    .fechatitle{
+        position: absolute;
+        width: 577px;
+        height: 91px;
+        left: 40px;
+        top: 210px;
+    /* Text/Text Semi Bold 1 */
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    /* Color/Text */
+    
+    color: #00473E;
+    
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 0;
+    flex-grow: 0; 
+    }
+    
+    .distritoimp{
+        box-sizing: border-box;
+    
+        position: absolute;
+        width: 260px;
+        height: 48px;
+        
+        left: 600px;
+        right: 0px;
+        top: 250px;
+        
+        /* Color/White */
+        
+        background: #F2F7F5;
+        /* Color/Gray 2 */
+        
+        border: 1px solid #00473E;
+        border-radius: 5px;
+    }
+    .distritotitle{
+        position: absolute;
+        width: 577px;
+        height: 91px;
+        left: 610px;
+        top: 210px;
+    /* Text/Text Semi Bold 1 */
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    /* Color/Text */
+    
+    color: #00473E;
+    
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 0;
+    flex-grow: 0; 
+    }
+    .corregiimp{
+        box-sizing: border-box;
+    
+        position: absolute;
+        width: 150px;
+        height: 48px;
+        left: 260px;
+        right: 0px;
+        top: 250px;
+        
+        /* Color/White */
+        
+        background: #F2F7F5;
+        /* Color/Gray 2 */
+        
+        border: 1px solid #00473E;
+        border-radius: 5px;
+    }
+    .corregititle{
+        position: absolute;
+        width: 577px;
+        height: 91px;
+        left: 270px;
+        top: 210px;
+    /* Text/Text Semi Bold 1 */
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    /* Color/Text */
+    
+    color: #00473E;
+    
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 0;
+    flex-grow: 0; 
+    }
+
+    .periodoimp{
+        box-sizing: border-box;
+    
+        position: absolute;
+        width: 130px;
+        height: 48px;
+        left: 440px;
+        right: 0px;
+        top: 250px;
+        
+        /* Color/White */
+        
+        background: #F2F7F5;
+        /* Color/Gray 2 */
+        
+        border: 1px solid #00473E;
+        border-radius: 5px;
+    }
+    .periodotitle{
+        position: absolute;
+        width: 577px;
+        height: 91px;
+        left: 450px;
+        top: 210px;
+    /* Text/Text Semi Bold 1 */
+    
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 27px;
+    /* identical to box height */
+    
+    
+    /* Color/Text */
+    
+    color: #00473E;
+    
+    
+    /* Inside auto layout */
+    
+    flex: none;
+    order: 0;
+    flex-grow: 0; 
+    }
+    .button{
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        padding: 10px 24px;
+        gap: 10px;
+        
+        position: absolute;
+        width: 100px;
+        height: 40px;
+        left: 753px;
+        top: 350px;
+        
+        /* Color/Green */
+        
+        border: 2px solid #00473E;
+        border-radius: 40px;
+        }

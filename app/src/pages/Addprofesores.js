@@ -54,11 +54,11 @@ console.log(newdata)
                     <form onSubmit={(e)=> submit(e)}>
                         <label for="nombre">
                             <span className='addnameestudiante'>Nombre*</span>
-                            <input onChange={(e)=>handler(e)} id="nombre" value={data.id_card_student} placeholder="Nombre del Estudiante" className='nestudiante' type="text" autoComplete='given-name' required/>  
+                            <input onChange={(e)=>handler(e)} id="nombre" value={data.id_card_student} placeholder="Nombre del Profesor" className='nestudiante' type="text" autoComplete='given-name' required/>  
                         </label>
                         <label for="apellido">
                             <span className='lasttitle'>Apellido*</span>
-                            <input onChange={(e)=>handler(e)} id="apellido" value={data.apellido} placeholder="Apellido del Estudiante" className='lastnameimput' type="text"  autoComplete='family-name' required/>  
+                            <input onChange={(e)=>handler(e)} id="apellido" value={data.apellido} placeholder="Apellido del Profesor" className='lastnameimput' type="text"  autoComplete='family-name' required/>  
                         </label>
                         <label for="fecha">
                             <span className='fechatitle'>Provincia*</span>
@@ -82,11 +82,11 @@ console.log(newdata)
                         </label>
                         <label for="id">
                             <span className='idtitle'>Cedula*</span>
-                            <input onChange={(e)=>handler(e)} id="id_estudiante" value={data.id_estudiante} placeholder="Cedula del Estudiante" className='idimput' type="name" required/>  
+                            <input onChange={(e)=>handler(e)} id="id_estudiante" value={data.id_estudiante} placeholder="Cedula del Profesor" className='idimput' type="name" required/>  
                         </label>
-                        <label for="grupo">
-                            <span className='grupotitle'>ID Grupo*</span>
-                            <input onChange={(e)=>handler(e)} id="id_grupo" value={data.id_grupo} placeholder="id_grupo" className='grupoimput' type="name" required/>  
+                        <label for="Materia">
+                            <span className='grupotitle'>Materia*</span>
+                            <input onChange={(e)=>handler(e)} id="id_grupo" value={data.id_grupo} placeholder="Materia" className='grupoimput' type="name" required/>  
                         </label>
                         <label for="acudiente">
                             <span className='acudientetitle'>Contraseña*</span>

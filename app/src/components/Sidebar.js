@@ -18,6 +18,10 @@ const Sidebar= ({Children}) =>{
             path:"/Profesores",
             name:"Profesores",
         },
+        {
+            path:"/Grupos",
+            name:"Grupos",
+        },
     ]
     return (
     
