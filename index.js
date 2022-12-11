@@ -1,5 +1,6 @@
 const express = require('express')
 const routerApi = require('./routes')
+const cors = require('cors')
 const{logErrors,errorHandler,boomErrorHandler}=require('./middlewares/error.handler')
 
 const app = express();
@@ -12,7 +13,9 @@ app.get('/',(req,res)=>{
 
 })
 require('./utils/auth')
+app.use(cors())
 routerApi(app)
+
 app.use(logErrors)
 app.use(boomErrorHandler)
 app.use(errorHandler)

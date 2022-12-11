@@ -9,6 +9,7 @@ const groupRouter =require('./group.router')
 const laboratoryRouter =require('./laboratory.router')
 const subjectRouter =require('./subject.router')
 const authRouter = require('./auth.router');
+const schedule = require('./schedule.router');
 function routerApi(app){
 	const router = express.Router()
 	app.use('/api/v1',router)
@@ -20,6 +21,7 @@ function routerApi(app){
 	router.use('/laboratory',laboratoryRouter)
 	router.use('/subject',subjectRouter)
 	router.use('/auth', authRouter);
+	router.use('/schedule', schedule);
 }	
 
 module.exports = routerApi

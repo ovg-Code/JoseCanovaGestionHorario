@@ -1,7 +1,8 @@
 
 import React, {Fragment, useEffect, useState} from 'react'
-import '../components/pagestyle.css'
+import '../components/styles/Addestudiantes.css'
 import 'bulma/css/bulma.css'
+import Sidebar from '../components/Sidebar';
 
 
 export default function Estudiantes() {
@@ -27,6 +28,7 @@ export default function Estudiantes() {
     console.log(datos);
   return (
     <div className='body'>
+         <Sidebar/>
         <a className='title'>Estudiantes</a>
         <a href='/Addestudiante' className='add'>
             + Nuevos Estudianes

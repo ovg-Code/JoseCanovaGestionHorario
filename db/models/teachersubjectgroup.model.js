@@ -8,33 +8,35 @@ const {SUBJECT_TABLE} = require('./subject.model')
 const TEACHERSUBJECTGROUP_TABLE = 'teachersubjectgroup'
 
 const TeacherSubjectGroupSchema = {
+    id_schedule:{
+        primaryKey: true,
+        allowNull: false,
+        autoIncrement: false,
+        type: DataTypes.STRING,
+    },
     fk_id_card_teacher:{
         allowNull: false,
-        unique:true,
         autoIncrement: false,
-        primaryKey: true,
         type: DataTypes.STRING,
         references:{model:TEACHER_TABLE,key:'id_card_teacher'}
     },
     fk_id_group:{
         allowNull: false,
         type: DataTypes.STRING,
-        primaryKey: true,
         references:{model:GROUP_TABLE,key:'id_group'}
     },
     fk_id_subject:{
         allowNull: false,
         type: DataTypes.STRING,
-        primaryKey: true,
         references:{model:SUBJECT_TABLE,key:'id_subject'}
     },
     hourteachersubjectgroup:{
         allowNull: false,
-        type: DataTypes.TIME
+        type: DataTypes.STRING
     },
     dayteachersubjectgroup:{
         allowNull: false,
-        type: DataTypes.DATE
+        type: DataTypes.STRING
     }
 
 

@@ -1,10 +1,10 @@
 const express = require('express')
 const passport = require('passport');
 
-const SubjectService = require('./../services/subject.service')
-const validatorHandler=require('./../middlewares/validator.handler')
-const { checkRoles } = require('./../middlewares/auth.handle')
-const{createSubjectSchema,getSubjectSchema,updateSubjectSchema}=require('./../schemas/subject.schema')
+const SubjectService = require('../services/schedule.service')
+const validatorHandler=require('../middlewares/validator.handler')
+const { checkRoles } = require('../middlewares/auth.handle')
+const{createSubjectSchema,getSubjectSchema,updateSubjectSchema}=require('../schemas/subject.schema')
 
 const router = express.Router()
 const service = new SubjectService
@@ -12,8 +12,6 @@ const service = new SubjectService
 //GET
 
 router.get('/',
-  passport.authenticate('jwt', {session: false}),
-  checkRoles('admin','teacher'),
   async (req,res,next)=>{
 	try{
 
@@ -27,12 +25,10 @@ router.get('/',
 })
 
 router.get('/:id',
-  passport.authenticate('jwt', {session: false}),
-  checkRoles('admin','teacher'),
   async (req,res,next)=>{
 	try{
 		const { id } = req.params
-		const student = await service.findOne(id)
+		const student = await service.findOneGroup(id)
 		res.json(student) 
 
 	}catch(error){
@@ -45,8 +41,6 @@ router.get('/:id',
 // POST
 
 router.post('/',
-  
-  validatorHandler(createSubjectSchema, 'body'),
   async (req,res,next)=>{
 	try{
 		const body = req.body

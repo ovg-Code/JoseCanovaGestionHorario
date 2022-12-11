@@ -1,6 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react'
-import '../components/Addestudiantes.css'
+import '../components/styles/Addestudiantes.css'
 import axios from 'axios';
+import Sidebar from '../components/Sidebar';
 
 export default function Addestudiante() {
 const url="http://localhost:3000/api/v1/student"
@@ -47,6 +48,7 @@ console.log(newdata)
   return (
     <Fragment>
         <div>
+            <Sidebar/>
         <h1 className='title'>Añadir Nuevo Estudiante</h1>
         <div className='container_tabla'>
             <div className='top_tabla'>
