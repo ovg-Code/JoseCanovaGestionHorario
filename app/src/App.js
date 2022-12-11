@@ -9,6 +9,7 @@ import Addprofesores from './pages/Addprofesores'
 import Addgrupos from './pages/Addgrupos'
 import Grupos from './pages/Grupos'
 import Addsalon from './pages/Addsalon'
+import Editestudiante from './pages/Editestudiantes'
 
 export const App = () => {
   return (
@@ -24,6 +25,7 @@ export const App = () => {
             <Route path='/Grupos' element={<Grupos/>}/>
             <Route path='/Addgrupos' element={<Addgrupos/>}/>
             <Route path='/Addsalon' element={<Addsalon/>}/>
+            <Route path='/:id/Addestudiante' element={<Editestudiante/>}/>
           </Routes> 
       </Router>
     </div>

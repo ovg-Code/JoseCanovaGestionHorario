@@ -2,12 +2,13 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import '../components/pagestyle.css'
 import 'bulma/css/bulma.css'
-import { Task } from '@mui/icons-material';
+import { useNavigate } from "react-router-dom";
 
 
 export default function Estudiantes() {
 
     const[datos, setdatos] = useState([])
+    const navigate = useNavigate()
 
     const getdatos = async () => {
         try {
@@ -59,7 +60,7 @@ export default function Estudiantes() {
                     <td>{'/'}</td>
                     <td>{datos.fk_id_group}</td>
                     <td>{datos.phonenumberstudent}</td>
-                    <td><a className='edit' onClick={() => console.log("edit")}>Editar</a></td>
+                    <td><a className='edit' onClick={() => navigate('/'+datos.id_card_student+'/Addestudiante')}>Editar</a></td>
                     <td><a className='elim' onClick={() => handlerDelete(datos.id_card_student)}>Eliminar</a></td>
                 </tr>
                 ))}
