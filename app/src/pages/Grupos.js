@@ -26,7 +26,7 @@ export default function Profesores() {
     console.log(datos);
   return (
     <div className='body'>
-        <a className='title'>Profesores</a>
+        <a className='title'>Grupos</a>
         <a href='/Addgrupos' className='add'>
             + Nuevos Grupos
         </a>
