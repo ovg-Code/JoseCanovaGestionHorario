@@ -25,9 +25,16 @@
   },
   "dependencies": {
     "@hapi/boom": "^10.0.0",
+<<<<<<< HEAD
     "axios-jwt": "^2.1.1",
     "bcrypt": "^5.1.0",
     "bulma": "^0.9.4",
+=======
+<<<<<<< HEAD
+    "bcrypt": "^5.1.0",
+=======
+>>>>>>> 4473b2679aebd8142687763c023e206e3e1ed5d3
+>>>>>>> Front-end
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",

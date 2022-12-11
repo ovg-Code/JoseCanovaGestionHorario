@@ -1,7 +1,6 @@
 import React, {Fragment, useEffect, useState} from 'react'
-import '../components/styles/Addestudiantes.css'
+import '../components/Addestudiantes.css'
 import axios from 'axios';
-import Sidebar from '../components/Sidebar';
 import { useParams } from "react-router-dom";
 
 export default function Addestudiante() {
@@ -21,10 +20,15 @@ const [data, setData]= useState({
 })
 
 const params = useParams();
-
+function handler(e){
+const newdata={...data}
+newdata[e.target.id] = e.target.value
+setData(newdata)
+console.log(newdata)
+}
 function submit(e){
     e.preventDefault();
-    axios.post(url,{
+axios.patch(url+'/'+ data.id_estudiante,{
             id_card_student: data.id_estudiante,
             firstnamestudent: data.nombre,
             firstlastnamestudent: data.apellido,
@@ -35,17 +39,8 @@ function submit(e){
             phonenumberstudent: data.telefono,
             passwordstudent: data.passwordstudent,
             fk_id_group: data.id_grupo
-        })
-        .then(res=>{
-            console.log(res.data)
-        })
-}
-
-function handler(e){
-const newdata={...data}
-newdata[e.target.id] = e.target.value
-setData(newdata)
-console.log(newdata)
+    }
+    );
 }
 
 const loaddatos = async (id) =>{
@@ -76,7 +71,6 @@ useEffect(() => {
   return (
     <Fragment>
         <div>
-            <Sidebar/>
         <h1 className='title'>Añadir Nuevo Estudiante</h1>
         <div className='container_tabla'>
             <div className='top_tabla'>
@@ -131,7 +125,7 @@ useEffect(() => {
                             <input onChange={(e)=>handler(e)} id="acudienteapellido" value={data.acudienteapellido} placeholder="Apellido del acudiente" className='acudienteapellidoimput' type="name" required/>  
                         </label>
                         <button className='button' type='submit'>
-                            Guardar
+                            Editar
                         </button>
                     </form> 
             </div>

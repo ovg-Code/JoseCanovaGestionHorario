@@ -8,6 +8,11 @@ import Addprofesores from './pages/Addprofesores'
 import Acceso from './pages/Acceso'
 import PerfilEstudiante from './pages/PerfilEstudiante'
 import Horario from './pages/Horario'
+import Addgrupos from './pages/Addgrupos'
+import Grupos from './pages/Grupos'
+import Addsalon from './pages/Addsalon'
+import Editestudiante from './pages/Editestudiantes'
+import Editprofesores from './pages/Editprofesores'
 
 
 export const App = () => {
@@ -24,6 +29,12 @@ export const App = () => {
             <Route path='/Acceso' element={<Acceso/>}/>
             <Route path='/PerfilEstudiante' element={<PerfilEstudiante/>}/>
             <Route path='Horario' element={<Horario/>}/>
+            <Route path='/Grupos' element={<Grupos/>}/>
+            <Route path='/Addgrupos' element={<Addgrupos/>}/>
+            <Route path='/Addsalon' element={<Addsalon/>}/>
+            <Route path='/:id/Addestudiante' element={<Editestudiante/>}/>
+            <Route path='/:id/Addprofesores' element={<Editprofesores/>}/>
+
           </Routes> 
       </Router>
     </div>
