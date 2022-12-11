@@ -21,7 +21,7 @@ class StudentService{
 	}
 
 	async find(){
-		const student= await models.Student.findAll()
+		const student= await models.Student.findAll({include:['guardian']})
 		return student
 	}
 
