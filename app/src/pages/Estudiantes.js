@@ -2,11 +2,13 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import '../components/pagestyle.css'
 import 'bulma/css/bulma.css'
+import { useNavigate } from "react-router-dom";
 
 
 export default function Estudiantes() {
 
     const[datos, setdatos] = useState([])
+    const navigate = useNavigate()
 
     const getdatos = async () => {
         try {
@@ -25,13 +27,21 @@ export default function Estudiantes() {
     }, []);
 
     console.log(datos);
+
+    const handlerDelete = async (id_card_student) => {
+        const res = await fetch('http://localhost:3000/api/v1/student/'+id_card_student, {
+            method: "DELETE",
+        })
+        setdatos(datos.filter(datos => datos.id_card_student !== id_card_student)) ;
+    }
+
   return (
     <div className='body'>
         <a className='title'>Estudiantes</a>
         <a href='/Addestudiante' className='add'>
             + Nuevos Estudianes
         </a>
-        <Fragment className>
+        <Fragment>
         <table className='tabla'>
             <thead>
                 <tr>
@@ -42,15 +52,16 @@ export default function Estudiantes() {
                     <th>Telefono</th>
                 </tr>
             </thead>
-            <tbody >
+            <tbody>
                 {datos.map(datos => (
-                <tr>
+                <tr key={datos.id_card_student}>
                     <td>{datos.firstnamestudent} {datos.firstlastnamestudent}</td>
                     <td>{datos.id_card_student}</td>
                     <td>{'/'}</td>
                     <td>{datos.fk_id_group}</td>
-                    <td>{datos.phonenumberstudent
-}</td>
+                    <td>{datos.phonenumberstudent}</td>
+                    <td><a className='edit' onClick={() => navigate('/'+datos.id_card_student+'/Addestudiante')}>Editar</a></td>
+                    <td><a className='elim' onClick={() => handlerDelete(datos.id_card_student)}>Eliminar</a></td>
                 </tr>
                 ))}
             </tbody>

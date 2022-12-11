@@ -1,48 +1,69 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import '../components/Addestudiantes.css'
 import axios from 'axios';
+import { useParams } from "react-router-dom";
 
 export default function Addestudiante() {
-const url="http://localhost:3000/api/v1/teacher"
-const [data, setData]= useState({
-   id_estudiante:"",
-   nombre: "",
-   apellido: "",
-   corregimiento:"",
-   provincestudent:"",
-   distrito:"",
-   email:"",
-   telefono:"",
-   password:"",
-   id_grupo:"",
-   
-})
-
-function submit(e){
-    e.preventDefault();
-    axios.post(url,{
-        id_card_teacher: data.id_estudiante,
-        firstnameteacher: data.nombre,
-        firstlastnameteacher: data.apellido,
-        corregimientoteacher: data.corregimiento,
-        provinceteacher: data.provincestudent,
-        districtteacher: data.distrito,
-        emailteacher: data.email,
-        phonenumberteacher: data.telefono,
-        passwordteacher: data.passwordstudent,
+    const url="http://localhost:3000/api/v1/teacher"
+    const [data, setData]= useState({
+       id_estudiante:"",
+       nombre: "",
+       apellido: "",
+       corregimiento:"",
+       provincestudent:"",
+       distrito:"",
+       email:"",
+       telefono:"",
+       password:"",       
     })
-    .then(res=>{
-        console.log(res.data)
-    })
-}
-
-function handler(e){
-const newdata={...data}
-newdata[e.target.id] = e.target.value
-setData(newdata)
-console.log(newdata)
-}
-
+    
+    const params = useParams();
+    function handler(e){
+    const newdata={...data}
+    newdata[e.target.id] = e.target.value
+    setData(newdata)
+    console.log(newdata)
+    }
+    function submit(e){
+        e.preventDefault();
+    axios.patch(url+'/'+ data.id_estudiante,{
+                id_card_teacher: data.id_estudiante,
+                firstnameteacher: data.nombre,
+                firstlastnameteacher: data.apellido,
+                corregimientoteacher: data.corregimiento,
+                provinceteacher: data.provincestudent,
+                districtteacher: data.distrito,
+                emailteacher: data.email,
+                phonenumberteacher: data.telefono,
+                passwordteacher: data.passwordstudent,
+        }
+        );
+    }
+    
+    const loaddatos = async (id) =>{
+    const res = await fetch('http://localhost:3000/api/v1/teacher/'+id)
+    const data = await res.json()
+    setData({
+        id_estudiante: data.id_card_teacher,
+        nombre: data.firstnameteacher,
+        apellido: data.firstlastnameteacher,
+        corregimiento: data.corregimientoteacher,
+        provincestudent: data.provinceteacher,
+        distrito: data.districtteacher,
+        email: data.emailteacher,
+        telefono: data.phonenumberteacher,
+        passwordstudent: data.passwordteacher})
+    };
+    
+    
+    useEffect(() => {
+        if (params.id ){
+            loaddatos(params.id);
+        }
+    }, [params.id])
+    
+    
+    
   return (
         <div>
         <h1 className='title'>Añadir Nuevo Profesor</h1>
@@ -52,7 +73,7 @@ console.log(newdata)
                     <form onSubmit={(e)=> submit(e)}>
                         <label for="nombre">
                             <span className='addnameestudiante'>Nombre*</span>
-                            <input onChange={(e)=>handler(e)} id="nombre" value={data.id_card_student} placeholder="Nombre del Profesor" className='nestudiante' type="text" autoComplete='given-name' required/>  
+                            <input onChange={(e)=>handler(e)} id="nombre" value={data.nombre} placeholder="Nombre del Profesor" className='nestudiante' type="text" autoComplete='given-name' required/>  
                         </label>
                         <label for="apellido">
                             <span className='lasttitle'>Apellido*</span>
@@ -91,7 +112,7 @@ console.log(newdata)
                             <input onChange={(e)=>handler(e)} id="passwordstudent" value={data.passwordstudent} placeholder="Contraseña del estudiante" className='acudienteimput' type="name" required/>  
                         </label>
                         <button className='button' type='submit'>
-                            Guardar
+                            Editar
                         </button>
                     </form> 
             </div>

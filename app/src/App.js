@@ -6,6 +6,11 @@ import Sidebar from './components/Sidebar'
 import Estudiantes from './pages/Estudiantes'
 import Addestudiante from './pages/Addestudiante'
 import Addprofesores from './pages/Addprofesores'
+import Addgrupos from './pages/Addgrupos'
+import Grupos from './pages/Grupos'
+import Addsalon from './pages/Addsalon'
+import Editestudiante from './pages/Editestudiantes'
+import Editprofesores from './pages/Editprofesores'
 
 export const App = () => {
   return (
@@ -18,6 +23,11 @@ export const App = () => {
             <Route path='/Estudiantes' element={<Estudiantes/>}/>
             <Route path='/Addestudiante' element={<Addestudiante/>}/>
             <Route path='/Addprofesores' element={<Addprofesores/>}/>
+            <Route path='/Grupos' element={<Grupos/>}/>
+            <Route path='/Addgrupos' element={<Addgrupos/>}/>
+            <Route path='/Addsalon' element={<Addsalon/>}/>
+            <Route path='/:id/Addestudiante' element={<Editestudiante/>}/>
+            <Route path='/:id/Addprofesores' element={<Editprofesores/>}/>
           </Routes> 
       </Router>
     </div>
