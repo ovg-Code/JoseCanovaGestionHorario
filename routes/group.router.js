@@ -43,6 +43,20 @@ router.get('/:id',
 		}
 })
 
+router.get('/teacher/:id',
+	async (req,res,next)=>{
+		try{
+			const { id } = req.params
+			const group = await service.findGroup(id)
+			res.json(group) 
+	
+		}catch(error){
+	
+			next(error)
+	
+		}
+})
+
 // POST
 
 router.post('/',

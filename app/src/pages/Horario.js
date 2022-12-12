@@ -1,7 +1,7 @@
 import React, {Fragment, useEffect, useState} from 'react'
 import Sidebar from '../components/Sidebar'
 import 'bulma/css/bulma.min.css'
-import '../components/styles/perfilEstudianteStyle.css'
+import '../components/styles/HorarioStyle.css'
 import axios from 'axios';
 
 

@@ -25,16 +25,11 @@
   },
   "dependencies": {
     "@hapi/boom": "^10.0.0",
-<<<<<<< HEAD
+    "@material-ui/core": "^4.12.4",
+    "@material-ui/icons": "^4.11.3",
     "axios-jwt": "^2.1.1",
     "bcrypt": "^5.1.0",
     "bulma": "^0.9.4",
-=======
-<<<<<<< HEAD
-    "bcrypt": "^5.1.0",
-=======
->>>>>>> 4473b2679aebd8142687763c023e206e3e1ed5d3
->>>>>>> Front-end
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
@@ -47,6 +42,7 @@
     "pg-hstore": "^2.3.4",
     "react-data-table-component": "^7.5.3",
     "sequelize": "^6.25.3",
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "universal-cookie": "^4.0.4"
   }
 }

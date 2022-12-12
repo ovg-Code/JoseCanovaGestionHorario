@@ -1,5 +1,6 @@
 const boom = require('@hapi/boom');
 const {models} = require('./../libs/sequelize')
+const sequelize = require('../libs/sequelize')
 
 class GroupService{
 
@@ -25,6 +26,12 @@ class GroupService{
 
 	async find(){
 		const group= await models.Group.findAll()
+		return group
+	}
+
+	async findGroup(id){
+		const group= await sequelize.query('SELECT * FROM  F_PROFESORGRUPO(:id)',
+		{replacements: { id },type: sequelize.QueryTypes.SELECT });
 		return group
 	}
 

@@ -1,183 +1,98 @@
-html{
-    background-color: #F2F7F5 !important;
-    font-family: 'Poppins'!important;
-    overflow-y:hidden;
+.container{
+    left: 400px;
 }
 
-.createSchedule{
-    top: 10px;
+header h3{
+   font-size: 30px;
+   font-weight: bold;
+   font-family: 'Poppins';
+   color: #00473E;
 }
 
-.teacher{
-    position: absolute;
-    width: 577px;
-    height: 91px;
-    left: 40px;
-    top: 110px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 27px;
-    color: #00473E;
+.Perfil{
+ position: absolute;
+ width: 70%;
+height: 100%;
+top: 60px;
 }
 
-.teacherInp{
-    position: absolute;
-    width: 400px;
-    height: 48px;
-    left: 30px;
-    right: 0px;
-    top: 150px;
-    background: #F2F7F5;
-    border: 1px solid #00473E;
-    border-radius: 5px;
-}
-
-.subject{
-    position: absolute;
-    width: 577px;
-    height: 91px;
-    left: 480px;
-    top: 110px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 27px;
-    color: #00473E;
-}
-
-.subjectInp{
-    position: absolute;
-    width: 400px;
-    height: 48px;
-    left: 0 px;
-    right: 30px;
-    top: 150px;
-    background: #F2F7F5;
-    border: 1px solid #00473E;
-    border-radius: 5px; 
-}
-
-.schedule{
-    position: absolute;
-    width: 577px;
-    height: 91px;
-    left: 40px;
-    top: 210px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 27px;
-    color: #00473E;
-}
-
-.scheduleInp{
-    box-sizing: border-box;
-    position: absolute;
-    width: 200px;
-    height: 48px;
-    left: 30px;
-    right: 0px;
-    top: 250px;
-    background: #F2F7F5;
-    border: 1px solid #00473E;
-    border-radius: 5px;
-}
-
-.day{
-    position: absolute;
-    width: 577px;
-    height: 91px;
-    left: 270px;
-    top: 210px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 27px;
-    color: #00473E;
-}
-.dayInp{
-    box-sizing: border-box;
-    position: absolute;
-    width: 300px;
-    height: 48px;
-    left: 260px;
-    right: 0px;
-    top: 250px;
-    background: #F2F7F5;
-    border: 1px solid #00473E;
-    border-radius: 5px;
-}
-
-.group{
-    position: absolute;
-    width: 577px;
-    height: 91px;
-    left: 610px;
-    top: 210px;
-    font-family: 'Poppins';
-    font-style: normal;
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 27px;
-    color: #00473E;
-}
-
-.groupInp{
-    position: absolute;
-    width: 260px;
-    height: 48px;
-    left: 600px;
-    right: 0px;
-    top: 250px;
-    background: #F2F7F5;
-    border: 1px solid #00473E;
-    border-radius: 5px;
-}
-
-.button2{
-    position: absolute;
-    width: 100px;
-    height: 40px;
-    left: 750px;
-    top: 350px;
-}
-
-.Horario{
-
-    position: absolute;
-    left: 350px;
-    top: 580px;
-    right:350px ;
-    width: 85%;
-    height: 20%;
-}
-
-.Horario table{
-    position: absolute;
-    left: 40px;
-    right: 5070px;
-    width:80% ;
+.avatar img{
+    width: 100%;
     height: 100%;
-    
 }
 
-table thead{
-    background-color: #00473E !important;
-    
-}
-table thead tr th{
-    color: #ffffff !important;
-    text-align: center !important;
+.avatar{
+    top:40px;
+    left: 70px;
+    width: 150px;
+    height: 150px;
 }
 
-.schedule2{
+.info{
     position: absolute;
-   top:-60px;
-   color:#00473E;
-   width:100% ;
+    top: 270px;
+    left: 80px;
+    font-family: 'Poppins';
+    color: #475D5B;
+    font-size: 15px;
+    font-weight: bold;
+}
+.info-nombre h4{
+    color: #00473E;
+    font-weight:900;
+    font-size: 25px;
+}
+
+.infoData{
+    position: absolute;
+    top: 390px;
+    width: 70%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+}
+.infoData h5 {
+    margin-bottom: 20px ;
+    color: #475D5B;
+    font-weight: bolder;
+}
+
+.infoData5{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    color: #00473E;
+    font-weight: bolder;
+}
+.infoData5 img{
+    margin-right: 10px;
+}
+
+.Horario2{
+    position: absolute;
+    width: 100%;
+   height: 100%;
+   left: -380px;
+}
+
+.schedule3{
+    top: -60px !important;
+    color: #00473E !important;
+    width: 100% !important;
+}
+.about, .education{
+    position: absolute;
+    left: -320px;
+
+}
+
+.education{
+    top: 300px !important;
+}
+
+.about h1 , .education h1{
+font-size: 25px;
+font-weight: 800;
 }

@@ -47,3 +47,10 @@ figure{
     top: 105%;
     left: 66%;
 }
+
+.container2{
+    position: absolute;
+    background-color: #00473E !important;
+    width: 100% !important ;
+    height: 100% !important;
+}

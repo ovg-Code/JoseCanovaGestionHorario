@@ -1,10 +1,9 @@
 import React, {Fragment, useEffect, useState} from 'react'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/SidebarProfesor'
 import '../components/styles/perfilEstudianteStyle.css'
 
 import cover from './../components/cover.png'
 import avatar from './../components/avatar.png'
-import parent from './../components/parent.png'
 import from1 from './../components/icon.png'
 import phone from './../components/Phone.png'
 import mail from './../components/Mail.png'
@@ -36,7 +35,7 @@ export default function PerfilEstudiante() {
             <div className='container'>
                 <header>
 
-                    <h3>Detalles de Estudiante</h3>
+                    <h3>Detalles de Profesor</h3>
 
                 </header>
 
@@ -54,22 +53,12 @@ export default function PerfilEstudiante() {
                 <section className='info'>
                     <di className='info-nombre'>
                         <h4 >{cookies.get('Nombre')+' '+cookies.get('Apellido')}</h4>
-                        <p>Estudiante</p>
+                        <p>Profesor</p>
                     </di>
                 </section>
 
                 <section className='infoData'>
-                        <div className='infoData1'>
-                            <h5>Acudiente:</h5>
-                            <div className='infoData5'>
-
-                                <img src={parent}/>
-                                <p>{cookies.get('Nombre')+' '+cookies.get('Apellido')}</p>
-                                
-                            </div>
-                            
-                        </div>
-
+                        
                         <div className='infoData2'>
                             <h5>Direccion:</h5>
                             <div className='infoData5' >
@@ -103,34 +92,20 @@ export default function PerfilEstudiante() {
 
                 </section>
 
-                <section className='Horario2'>
-                    <div className='Horario container is-fullhd ' >
-                    <h1 className='title_tabla schedule2 schedule3'>Horario de clase </h1>
-                        <table className='table is-bordered'>
-                            <thead>
-                                <tr>
-                                    <th>Horario</th>
-                                    <th>Lunes</th>
-                                    <th>Martes</th>
-                                    <th>Miercoles</th>
-                                    <th>Jueves</th>
-                                    <th>Viernes</th>
-                                </tr>
-                            </thead>
-                            <tbody >
-                                {horario.map(horario => (
-                                <tr>
-                                    <td>{horario.horario}</td>
-                                    <td>{horario.lunes}</td>
-                                    <td>{horario.martes}</td>
-                                    <td>{horario.miercoles}</td>
-                                    <td>{horario.jueves}</td>
-                                    <td>{horario.viernes}</td>
-                                </tr>
-                                ))}
-                            </tbody>
-                        </table>
+                <section className='Horario2 Horario container is-fullhd'>
+                    
+                   
+                    <div className='about'>
+                        <h1 className=' schedule3'>Acerca del profesor </h1>
+                        <p>
+
+                        </p>
                     </div>
+                    <div className='education'>
+                        <h1 className=' schedule3'>Nivel Educativo </h1>
+                        <p></p>
+                    </div>
+  
                 </section>
                
                 

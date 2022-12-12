@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect, useState} from 'react'
-import '../components/Addestudiantes.css'
+import '../components/styles/Addestudiantes.css'
 import axios from 'axios';
 import { useParams } from "react-router-dom";
 

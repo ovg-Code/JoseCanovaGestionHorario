@@ -12,7 +12,7 @@ const cookies = new Cookies();
 
 export default function Acceso(){
 
-    const url="http://localhost:3000/api/v1/auth//loginStudent"
+    const url="http://localhost:3000/api/v1/auth//loginTeacher"
     const [data, setData]= useState({
         id_card:"",
         password:"",  
@@ -26,16 +26,15 @@ export default function Acceso(){
         })
         .then(res=>{
            localStorage.setItem('token',res.data.token)
-           cookies.set('idCard',res.data.student.id_card_student,{path:'/'})
-           cookies.set('Nombre',res.data.student.firstnamestudent,{path:'/'})
-           cookies.set('Apellido',res.data.student.firstlastnamestudent,{path:'/'})
-           cookies.set('Telefono',res.data.student.phonenumberstudent,{path:'/'})
-           cookies.set('provincia',res.data.student.provincestudent,{path:'/'})
-           cookies.set('distrito',res.data.student.districtstudent,{path:'/'})
-           cookies.set('correo',res.data.student.emailstudent,{path:'/'})
-           cookies.set('grupo',res.data.student.fk_id_group,{path:'/'})
+           cookies.set('idCard',res.data.teacher.id_card_teacher,{path:'/'})
+           cookies.set('Nombre',res.data.teacher.firstnameteacher,{path:'/'})
+           cookies.set('Apellido',res.data.teacher.firstlastnameteacher,{path:'/'})
+           cookies.set('Telefono',res.data.teacher.phonenumberteacher,{path:'/'})
+           cookies.set('provincia',res.data.teacher.provinceteacher,{path:'/'})
+           cookies.set('distrito',res.data.teacher.districtteacher,{path:'/'})
+           cookies.set('correo',res.data.teacher.emailteacher,{path:'/'})
             window.location = '/PerfilEstudiante'
-            console.log(res.data.student.id_card_student)
+           
         })
     }
 
