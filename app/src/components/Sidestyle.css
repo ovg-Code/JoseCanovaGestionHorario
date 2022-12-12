@@ -37,13 +37,12 @@ main{
 }
 .link{
     font-family: 'Poppins';
-    margin: 0px;
-    padding: 0px;
     text-decoration: none;
     display: flex;
     color: #fff;
     padding: 10px 15px 20px;
     font-size: 25px;
+    gap: 15px;
 
 }
 

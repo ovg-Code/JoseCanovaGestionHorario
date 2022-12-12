@@ -2,24 +2,34 @@ import React, { Children } from 'react'
 import logito from './logo.png'
 import { NavLink } from 'react-router-dom';
 import './Sidestyle.css'
+import { FaUserTie,
+        FaUser,
+        FaTh,
+        FaRegWindowMaximize,
+
+} from "react-icons/fa";
 
 const Sidebar= ({Children}) =>{
   const menuItem=[
         {
             path:"/",
             name:"Tablero",
+            icon:<FaRegWindowMaximize/>
         },
         {
             path:"/Estudiantes",
             name:"Estudiantes",
+            icon:<FaUser/>
         },
         {
             path:"/Profesores",
             name:"Profesores",
+            icon:<FaUserTie/>
         },
         {
             path:"/Grupos",
             name:"Grupos",
+            icon:<FaTh/>
         },
     ]
     return (
