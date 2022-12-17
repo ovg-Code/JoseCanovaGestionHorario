@@ -2,17 +2,13 @@ const express = require('express')
 const routerApi = require('./routes')
 const{logErrors,errorHandler,boomErrorHandler}=require('./middlewares/error.handler')
 const cors = require('cors');
+const path = require('path')
 const app = express();
 const port = 3000;
 app.use(express.json());
 
 
-
-app.get('/',(req,res)=>{
-
-	res.send('Iniciando server')
-
-})
+app.use(express.static(path.join(__dirname,'public')))
 require('./utils/auth')
 app.use(cors())
 routerApi(app)
